@@ -7,152 +7,140 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icons.min.css">
 <style>
 :root{
-  --sp:#EE4D2D;--sp-dark:#C43B1F;--sp-light:#FFF3EF;
-  --txt:#1A1A1A;--muted:#888;--border:#EBEBEB;
-  --bg:#F4F5F7;--white:#fff;
-  --green:#00B14F;--orange:#FF9500;--red:#EE4D2D;--blue:#2563EB;
+  --sp:#EE4D2D;--sp-dark:#C43B1F;--sp-light:#FFF0ED;
+  --txt:#333;--muted:#757575;--border:#E8E8E8;
+  --bg:#F5F5F5;--white:#fff;
+  --green:#00B14F;--orange:#FF9500;--red:#EE4D2D;--blue:#2E7CF6;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--txt);display:flex;min-height:100vh;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--txt);display:flex;min-height:100vh;}
 
-/* ── SIDEBAR ── */
+/* SIDEBAR */
 .sidebar{width:220px;min-width:220px;background:var(--sp);display:flex;flex-direction:column;padding:0;position:fixed;top:0;left:0;height:100vh;z-index:200;}
-.sidebar-logo{padding:18px 16px 14px;border-bottom:1px solid rgba(255,255,255,.15);}
-.sidebar-logo .s-icon{width:32px;height:32px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
-.sidebar-logo .s-icon span{font-size:15px;font-weight:800;color:var(--sp);}
-.sidebar-logo h1{font-size:12px;font-weight:700;color:#fff;line-height:1.4;}
-.sidebar-logo p{font-size:10px;color:rgba(255,255,255,.55);margin-top:2px;}
-.sidebar-nav{padding:10px 0;flex:1;overflow-y:auto;}
-.nav-section{font-size:9px;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;padding:12px 16px 4px;}
-.nav-item{display:flex;align-items:center;gap:9px;padding:9px 16px;font-size:12px;font-weight:500;color:rgba(255,255,255,.75);cursor:pointer;border-left:3px solid transparent;transition:all .15s;}
-.nav-item:hover{background:rgba(0,0,0,.1);color:#fff;}
-.nav-item.active{background:rgba(0,0,0,.16);color:#fff;border-left-color:#fff;font-weight:700;}
-.nav-item i{font-size:15px;flex-shrink:0;opacity:.8;}
-.nav-item.active i{opacity:1;}
-.sidebar-footer{padding:10px 16px;border-top:1px solid rgba(255,255,255,.12);font-size:10px;color:rgba(255,255,255,.4);}
-.sidebar-footer b{color:rgba(255,255,255,.8);display:block;margin-bottom:2px;}
+.sidebar-logo{padding:20px 16px 16px;border-bottom:1px solid rgba(255,255,255,.15);}
+.sidebar-logo .s-icon{width:36px;height:36px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+.sidebar-logo .s-icon span{font-size:18px;font-weight:800;color:var(--sp);}
+.sidebar-logo h1{font-size:13px;font-weight:600;color:#fff;line-height:1.4;}
+.sidebar-logo p{font-size:11px;color:rgba(255,255,255,.7);margin-top:2px;}
+.sidebar-nav{padding:12px 0;flex:1;}
+.nav-section{font-size:10px;font-weight:600;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;padding:12px 16px 6px;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 16px;font-size:13px;font-weight:500;color:rgba(255,255,255,.85);cursor:pointer;border-left:3px solid transparent;transition:all .15s;}
+.nav-item:hover{background:rgba(255,255,255,.1);color:#fff;}
+.nav-item.active{background:rgba(255,255,255,.15);color:#fff;border-left-color:#fff;}
+.nav-item i{font-size:16px;flex-shrink:0;}
+.sidebar-footer{padding:12px 16px;border-top:1px solid rgba(255,255,255,.15);font-size:11px;color:rgba(255,255,255,.6);}
+.sidebar-footer b{color:rgba(255,255,255,.9);display:block;margin-bottom:2px;}
 
-/* ── TOPBAR ── */
+/* MAIN */
 .main-wrap{margin-left:220px;flex:1;display:flex;flex-direction:column;min-height:100vh;}
-.topbar{background:var(--white);border-bottom:1px solid var(--border);padding:0 22px;height:48px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
-.topbar h2{font-size:14px;font-weight:700;color:var(--txt);}
-.topbar .breadcrumb{font-size:10px;color:var(--muted);}
-.topbar .topbar-right{display:flex;align-items:center;gap:10px;}
-.topbar .status-badge{font-size:10px;padding:3px 9px;border-radius:99px;font-weight:700;}
-.status-ok{background:#E6F9EE;color:#0A7A33;}
-.main-content{padding:18px 22px;flex:1;}
+.topbar{background:var(--white);border-bottom:1px solid var(--border);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.topbar h2{font-size:15px;font-weight:600;color:var(--txt);}
+.topbar .breadcrumb{font-size:12px;color:var(--muted);}
+.topbar .topbar-right{display:flex;align-items:center;gap:12px;}
+.topbar .status-badge{font-size:11px;padding:4px 10px;border-radius:99px;font-weight:600;}
+.status-ok{background:#E8F5E9;color:#1B5E20;}
+.main-content{padding:20px 24px;flex:1;}
 
-/* ── PAGE TITLE ── */
-.page-title{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;}
-
-/* ── METRIC CARDS — estilo analítico ── */
-.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:16px;}
-.kpi-box{background:var(--white);border:0.5px solid var(--border);border-radius:10px;padding:14px 16px;position:relative;overflow:hidden;cursor:pointer;transition:border-color .2s;}
-.kpi-box:hover{border-color:var(--sp);}
-.kpi-box.k-accent{border-left:3px solid var(--sp);border-radius:0 10px 10px 0;}
-.kpi-box.k-green{border-left:3px solid var(--green);border-radius:0 10px 10px 0;}
-.kpi-box.k-orange{border-left:3px solid var(--orange);border-radius:0 10px 10px 0;}
-.kpi-box.k-red{border-left:3px solid var(--red);border-radius:0 10px 10px 0;}
-.kpi-box.k-blue{border-left:3px solid var(--blue);border-radius:0 10px 10px 0;}
-.kpi-box .k-label{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;}
-.kpi-box .k-val{font-size:26px;font-weight:700;color:var(--txt);line-height:1;margin-bottom:5px;}
-.kpi-box .k-bar{height:4px;background:#F0F0F0;border-radius:99px;margin-bottom:5px;overflow:hidden;}
-.kpi-box .k-bar-fill{height:100%;border-radius:99px;}
-.kpi-box .k-sub{font-size:10px;color:var(--muted);}
-
-/* ── SECTION CARDS ── */
-.card{background:var(--white);border:0.5px solid var(--border);border-radius:10px;margin-bottom:14px;overflow:hidden;}
-.card-header{padding:12px 16px;border-bottom:0.5px solid #F0F0F0;display:flex;align-items:center;gap:8px;background:#FAFAFA;}
-.card-header .sec-dot{width:7px;height:7px;border-radius:50%;background:var(--sp);flex-shrink:0;}
-.card-step{width:20px;height:20px;background:var(--sp);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;}
-.card-title{font-size:13px;font-weight:700;color:var(--txt);}
-.card-subtitle{font-size:11px;color:var(--muted);margin-left:auto;}
-.card-body{padding:14px 16px;}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+/* CARDS */
+.page-title{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px;}
+.kpi-box{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:16px 18px;}
+.kpi-box .k-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;}
+.kpi-box .k-val{font-size:26px;font-weight:700;color:var(--txt);line-height:1;}
+.kpi-box .k-sub{font-size:11px;color:var(--muted);margin-top:4px;}
+.kpi-box.k-accent{border-top:3px solid var(--sp);}
+.kpi-box.k-green{border-top:3px solid var(--green);}
+.kpi-box.k-orange{border-top:3px solid var(--orange);}
+.kpi-box.k-red{border-top:3px solid var(--red);}
+.kpi-box.k-blue{border-top:3px solid var(--blue);}
+.card{background:var(--white);border:1px solid var(--border);border-radius:8px;margin-bottom:16px;overflow:hidden;}
+.card-header{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.card-step{width:22px;height:22px;background:var(--sp);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.card-title{font-size:13px;font-weight:600;color:var(--txt);}
+.card-subtitle{font-size:12px;color:var(--muted);margin-left:auto;}
+.card-body{padding:16px 18px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
 @media(max-width:700px){.two-col{grid-template-columns:1fr;}}
 
-/* ── FORMS ── */
-.field-label{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:5px;}
-input[type=text],input[type=time],select,textarea{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:7px;font-size:13px;color:var(--txt);outline:none;font-family:inherit;background:var(--white);transition:border-color .15s;}
+/* FORM ELEMENTS */
+.field-label{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:6px;}
+input[type=text],input[type=time],select,textarea{width:100%;padding:8px 11px;border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--txt);outline:none;font-family:inherit;background:var(--white);transition:border-color .15s;}
 input[type=text]:focus,input[type=time]:focus,select:focus,textarea:focus{border-color:var(--sp);box-shadow:0 0 0 3px rgba(238,77,45,.08);}
 textarea{resize:vertical;min-height:90px;}
 .names-hint{font-size:11px;color:var(--muted);margin-top:4px;}
 .entry-row{display:flex;gap:8px;align-items:center;margin-bottom:6px;}
 .entry-row input{flex:1;}
 .entry-row select{width:110px;flex-shrink:0;}
-.rm-btn{width:28px;height:28px;border:1px solid var(--border);border-radius:6px;background:none;cursor:pointer;color:var(--muted);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;}
+.rm-btn{width:30px;height:30px;border:1px solid var(--border);border-radius:6px;background:none;cursor:pointer;color:var(--muted);font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;}
 .rm-btn:hover{border-color:var(--red);color:var(--red);background:#fff5f5;}
-.add-entry-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:5px 11px;border:1px dashed var(--border);border-radius:6px;background:none;cursor:pointer;color:var(--muted);margin-top:6px;transition:all .15s;}
+.add-entry-btn{display:flex;align-items:center;gap:6px;font-size:12px;padding:6px 12px;border:1px dashed var(--border);border-radius:6px;background:none;cursor:pointer;color:var(--muted);margin-top:6px;transition:all .15s;}
 .add-entry-btn:hover{border-color:var(--sp);color:var(--sp);background:var(--sp-light);}
 
-/* ── FILE UPLOAD ── */
-.file-upload{border:1.5px dashed var(--border);border-radius:10px;padding:20px 14px;text-align:center;cursor:pointer;transition:all .15s;background:#FAFAFA;}
+/* FILE UPLOAD */
+.file-upload{border:1.5px dashed var(--border);border-radius:8px;padding:18px 16px;text-align:center;cursor:pointer;transition:all .15s;background:#fafafa;}
 .file-upload:hover{border-color:var(--sp);background:var(--sp-light);}
 .file-upload.loaded{border-style:solid;border-color:var(--green);background:#F0FBF4;}
 .file-upload.erro{border-color:var(--red);background:var(--sp-light);}
-.file-upload i{font-size:26px;color:#CCC;display:block;margin-bottom:6px;}
+.file-upload i{font-size:26px;color:#ccc;display:block;margin-bottom:6px;}
 .file-upload.loaded i{color:var(--green);}
 .file-upload span{font-size:12px;color:var(--muted);}
-.file-upload.loaded span{color:#1B5E20;font-weight:600;}
+.file-upload.loaded span{color:#1B5E20;font-weight:500;}
 
-/* ── TURNO ── */
-.turno-group{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:12px;}
+/* TURNO */
+.turno-group{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:14px;}
 .turno-option{flex:1;position:relative;}
 .turno-option input{position:absolute;opacity:0;width:0;height:0;}
-.turno-option label{display:flex;align-items:center;justify-content:center;padding:9px 8px;font-size:13px;font-weight:600;cursor:pointer;color:var(--muted);background:var(--white);border-right:1px solid var(--border);transition:all .15s;}
+.turno-option label{display:flex;align-items:center;justify-content:center;padding:10px 8px;font-size:13px;font-weight:500;cursor:pointer;color:var(--muted);background:var(--white);border-right:1px solid var(--border);transition:all .15s;}
 .turno-option:last-child label{border-right:none;}
 .turno-option input:checked+label{background:var(--sp);color:#fff;}
 .time-grid{display:grid;grid-template-columns:1fr auto 1fr 1fr auto 1fr;gap:8px;align-items:end;}
-.time-div{display:flex;align-items:flex-end;padding-bottom:9px;color:#CCC;font-size:18px;justify-content:center;}
+.time-div{display:flex;align-items:flex-end;padding-bottom:9px;color:var(--border);font-size:20px;justify-content:center;}
 
-/* ── BUTTONS ── */
-.btn-primary{width:100%;padding:11px;font-size:13px;font-weight:700;background:var(--sp);border:none;border-radius:8px;cursor:pointer;color:#fff;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:7px;box-shadow:0 2px 6px rgba(238,77,45,.28);}
-.btn-primary:hover{background:var(--sp-dark);box-shadow:0 3px 10px rgba(238,77,45,.38);}
-.btn-primary:disabled{background:#CCC;cursor:not-allowed;box-shadow:none;}
-.btn-outline{width:100%;padding:9px;font-size:13px;font-weight:600;background:var(--white);border:1.5px solid var(--sp);border-radius:8px;cursor:pointer;color:var(--sp);margin-top:8px;display:flex;align-items:center;justify-content:center;gap:7px;transition:all .15s;}
+/* BUTTONS */
+.btn-primary{width:100%;padding:12px;font-size:14px;font-weight:600;background:var(--sp);border:none;border-radius:8px;cursor:pointer;color:#fff;transition:background .15s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.btn-primary:hover{background:var(--sp-dark);}
+.btn-primary:disabled{background:#ccc;cursor:not-allowed;}
+.btn-outline{width:100%;padding:10px;font-size:13px;font-weight:500;background:var(--white);border:1.5px solid var(--sp);border-radius:8px;cursor:pointer;color:var(--sp);margin-top:10px;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .15s;}
 .btn-outline:hover{background:var(--sp-light);}
-.btn-outline:disabled{border-color:#CCC;color:#CCC;cursor:not-allowed;}
+.btn-outline:disabled{border-color:#ccc;color:#ccc;cursor:not-allowed;}
 
-/* ── RULE INFO ── */
-.rule-info{background:var(--sp-light);border-radius:8px;padding:10px 14px;font-size:12px;color:var(--sp-dark);margin-top:10px;line-height:1.8;border-left:3px solid var(--sp);}
-.rule-info b{font-weight:700;}
+/* RULE INFO */
+.rule-info{background:var(--sp-light);border-radius:6px;padding:10px 14px;font-size:12px;color:var(--sp-dark);margin-top:12px;line-height:1.8;}
+.rule-info b{font-weight:600;}
 .info-msg{font-size:11px;color:var(--muted);text-align:center;padding:6px;margin-top:6px;}
 
-/* ── RESULTS BANNERS ── */
+/* RESULTS SECTION */
 .results-banners{}
-.rodizio-banner{background:#FFF8E1;border-bottom:1px solid #FFE082;padding:9px 16px;font-size:12px;color:#B06000;display:flex;align-items:center;gap:7px;}
-.pen-banner{background:#FFEBEE;border-bottom:1px solid #FFCDD2;padding:9px 16px;font-size:12px;color:#B71C1C;display:flex;align-items:center;gap:7px;}
+.rodizio-banner{background:#FFF8E1;border-bottom:1px solid #FFE082;padding:10px 18px;font-size:12px;color:#E65100;display:flex;align-items:center;gap:8px;}
+.pen-banner{background:#FFEBEE;border-bottom:1px solid #FFCDD2;padding:10px 18px;font-size:12px;color:#B71C1C;display:flex;align-items:center;gap:8px;}
+.results-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px;padding:16px 18px;background:var(--bg);border-bottom:1px solid var(--border);}
+.stat-box{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.stat-box .num{font-size:22px;font-weight:700;color:var(--txt);}
+.stat-box .lbl{font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:.01em;}
 
-/* ── STATS GRID — analítico ── */
-.results-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;padding:12px 16px;background:var(--bg);border-bottom:0.5px solid var(--border);}
-.stat-box{background:var(--white);border:0.5px solid var(--border);border-radius:8px;padding:10px 8px;text-align:center;cursor:pointer;transition:all .2s;}
-.stat-box:hover{border-color:var(--sp);transform:translateY(-1px);}
-.stat-box .num{font-size:20px;font-weight:700;color:var(--txt);}
-.stat-box .lbl{font-size:9px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.04em;}
-
-/* ── TABS ── */
-.tabs-bar{display:flex;border-bottom:2px solid var(--border);background:var(--white);padding:0 16px;overflow-x:auto;}
-.sp-tab{padding:11px 13px;font-size:12px;font-weight:600;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;color:var(--muted);white-space:nowrap;transition:all .15s;display:flex;align-items:center;gap:5px;}
+/* TABS */
+.tabs-bar{display:flex;border-bottom:1px solid var(--border);background:var(--white);padding:0 18px;overflow-x:auto;}
+.sp-tab{padding:12px 14px;font-size:13px;font-weight:500;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;color:var(--muted);white-space:nowrap;transition:all .15s;}
 .sp-tab:hover{color:var(--sp);}
 .sp-tab.active{border-bottom-color:var(--sp);color:var(--sp);}
-.tab-body{display:none;padding:14px 16px;}
+.tab-body{display:none;padding:16px 18px;}
 .tab-body.active{display:block;}
 
-/* ── TABLE ── */
-.search-box{width:100%;padding:7px 11px 7px 34px;border:1px solid var(--border);border-radius:7px;font-size:13px;outline:none;background:#FAFAFA url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='%23BBB' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") no-repeat 9px center;margin-bottom:10px;}
+/* TABLE */
+.search-box{width:100%;padding:8px 12px 8px 36px;border:1px solid var(--border);border-radius:6px;font-size:13px;outline:none;background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") no-repeat 10px center;margin-bottom:12px;}
 .search-box:focus{border-color:var(--sp);background-color:var(--white);}
 .table-wrap{overflow-x:auto;}
-.data-table{width:100%;border-collapse:collapse;font-size:12px;}
-.data-table th{font-size:9px;font-weight:700;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);white-space:nowrap;text-transform:uppercase;letter-spacing:.06em;background:#F8F8F8;}
-.data-table td{padding:8px 10px;border-bottom:1px solid #F5F5F5;color:var(--txt);vertical-align:middle;}
+.data-table{width:100%;border-collapse:collapse;font-size:13px;}
+.data-table th{font-size:10px;font-weight:600;color:var(--muted);text-align:left;padding:9px 10px;border-bottom:1.5px solid var(--border);white-space:nowrap;text-transform:uppercase;letter-spacing:.05em;background:var(--bg);}
+.data-table td{padding:9px 10px;border-bottom:1px solid var(--border);color:var(--txt);vertical-align:middle;}
 .data-table tr:last-child td{border-bottom:none;}
 .data-table tr:hover td{background:var(--sp-light);}
-.err-row td{background:#FFF5F5!important;}
-.sub-row td{background:#FFFDE7!important;}
-.no-data{padding:36px;text-align:center;color:var(--muted);}
+.err-row td{background:#fff5f5!important;}
+.sub-row td{background:#fffde7!important;}
+.no-data{padding:40px;text-align:center;color:var(--muted);}
 
-/* ── BADGES ── */
-.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:99px;font-size:10px;font-weight:700;white-space:nowrap;}
+/* BADGES */
+.badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:99px;font-size:11px;font-weight:600;white-space:nowrap;}
 .bsp-am{background:#FFF3E0;color:#E65100;}
 .bsp-sd{background:#E3F2FD;color:#0D47A1;}
 .bsp-both{background:#E8F5E9;color:#1B5E20;}
@@ -161,46 +149,34 @@ textarea{resize:vertical;min-height:90px;}
 .bsp-fiorino{background:#EDE7F6;color:#4527A0;}
 .bsp-passeio{background:#E0F2F1;color:#004D40;}
 .bsp-van{background:#FCE4EC;color:#880E4F;}
-.bsp-ok{background:#E6F9EE;color:#0A7A33;}
-.bsp-sub{background:#FFF8E1;color:#B06000;}
+.bsp-ok{background:#E8F5E9;color:#1B5E20;}
+.bsp-sub{background:#FFF8E1;color:#FF6F00;}
 .bsp-vol{background:#E3F2FD;color:#0D47A1;}
 .bsp-novo{background:#F3E5F5;color:#4A148C;}
 .bsp-err{background:#FFEBEE;color:#B71C1C;}
-.b-err{background:#FFEBEE;color:#B71C1C;}
-.b-sub{background:#FFF8E1;color:#B06000;}
-.b-am{background:#FFF3E0;color:#E65100;}
 
-/* ── KPI DASHBOARD — analítico ── */
-.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:16px;}
-.kpi-card{background:var(--white);border:0.5px solid var(--border);border-radius:10px;padding:14px;position:relative;overflow:hidden;cursor:pointer;transition:border-color .2s;}
-.kpi-card:hover{border-color:var(--sp);}
-.kpi-card .knum,.kpi-card .k-val{font-size:24px;font-weight:700;}
-.kpi-card .klbl,.kpi-card .k-label{font-size:10px;color:var(--muted);margin-top:6px;letter-spacing:.01em;display:block;}
-.kpi-card .ksub,.kpi-card .k-sub{font-size:10px;color:var(--muted);margin-top:2px;display:block;}
-.kpi-num{font-size:24px;font-weight:700;}
-.kpi-label{font-size:10px;color:var(--muted);margin-top:6px;display:block;}
-.kpi-sub{font-size:10px;color:var(--muted);margin-top:2px;display:block;}
-
-/* ── BARRA PROGRESSO / KPI BAR ── */
-.section-sub{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin:1.1rem 0 .6rem;}
+/* KPI DASHBOARD STYLES */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px;}
+.kpi-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.kpi-card .knum{font-size:26px;font-weight:700;}
+.kpi-card .klbl{font-size:11px;color:var(--muted);margin-top:6px;letter-spacing:.01em;}
+.kpi-card .ksub{font-size:11px;color:var(--muted);margin-top:2px;}
+.section-sub{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:1.2rem 0 .7rem;}
 .bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
 .bar-label{width:160px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0;}
-.bar-track{flex:1;background:var(--border);border-radius:99px;height:13px;overflow:hidden;}
-.bar-fill{height:100%;border-radius:99px;transition:width .4s ease;}
-.bar-val{width:38px;text-align:right;font-size:13px;font-weight:700;flex-shrink:0;}
-.risk-alto td{background:#FFF5F5;}
-.risk-medio td{background:#FFFDE7;}
-
-/* ── DISPONIBILIDADE TOGGLE ── */
-.disp-toggle{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;width:fit-content;margin-bottom:14px;}
-.disp-toggle button{padding:6px 16px;font-size:12px;font-weight:600;background:var(--white);border:none;border-right:1px solid var(--border);cursor:pointer;color:var(--muted);transition:all .15s;}
+.bar-track{flex:1;background:var(--border);border-radius:99px;height:14px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:99px;}
+.bar-val{width:40px;text-align:right;font-size:13px;font-weight:700;flex-shrink:0;}
+.risk-alto td{background:#fff5f5;}
+.risk-medio td{background:#fffde7;}
+.disp-toggle{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;width:fit-content;margin-bottom:16px;}
+.disp-toggle button{padding:7px 18px;font-size:13px;font-weight:500;background:var(--white);border:none;border-right:1px solid var(--border);cursor:pointer;color:var(--muted);}
 .disp-toggle button:last-child{border-right:none;}
 .disp-toggle button.active{background:var(--sp);color:#fff;}
-.modal-section{margin-bottom:1.4rem;}
-.modal-header{display:flex;align-items:center;gap:10px;margin-bottom:.7rem;}
-.modal-title{font-size:14px;font-weight:700;}
-.ns-search{width:100%;padding:7px 11px 7px 34px;border:1px solid var(--border);border-radius:7px;font-size:13px;outline:none;background:#FAFAFA url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='%23BBB' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") no-repeat 9px center;margin-bottom:10px;}
-#debug-output{display:none;margin-top:10px;background:#1A1A2E;color:#00FF88;font-family:monospace;font-size:12px;padding:14px;border-radius:10px;white-space:pre-wrap;max-height:300px;overflow-y:auto;}
+.modal-section{margin-bottom:1.5rem;}
+.modal-header{display:flex;align-items:center;gap:10px;margin-bottom:.75rem;}
+.modal-title{font-size:14px;font-weight:600;}
+.ns-search{width:100%;padding:8px 12px 8px 36px;border:1px solid var(--border);border-radius:6px;font-size:13px;outline:none;background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") no-repeat 10px center;margin-bottom:10px;}
 </style>
 </head>
 <body>
@@ -235,6 +211,47 @@ textarea{resize:vertical;min-height:90px;}
         <option value="PR-CURITIBA">LM Hub_PR_Curitiba</option>
         <option value="PR-PATO-BRANCO">LM Hub_PR_Pato Branco</option>
         <option value="PR-SAO-JOSE-DOS-PINH">LM Hub_PR_Sao Jose Dos Pinhais</option>
+        <option value="DF-BRASILIA-RECANTO">LM Hub_DF_Brasília_Recanto_Emas</option>
+        <option value="DF-BRASILIA-SAAN">LM Hub_DF_Brasília_SAAN</option>
+        <option value="DF-BRASILIA-SIA">LM Hub_DF_Brasília_SIA</option>
+        <option value="DF-LUZIANIA">LM Hub_DF_Luziania</option>
+        <option value="GO-ANAPOLIS">LM Hub_GO_Anápolis</option>
+        <option value="GO-APARECIDA">LM Hub_GO_Aparecida de Goiânia</option>
+        <option value="GO-GOIANIA-AERO">LM Hub_GO_Goiânia_ Aeroporto</option>
+        <option value="GO-GOIANIA-ST">LM Hub_GO_Goiânia_ St. Empr</option>
+        <option value="GO-RIO-VERDE">LM Hub_GO_Rio Verde</option>
+        <option value="MS-CAMPO-GRANDE">LM Hub_MS_Campo Grande</option>
+        <option value="MS-DOURADOS">LM Hub_MS_Dourados</option>
+        <option value="MS-TRES-LAGOAS">LM Hub_MS_Três Lagoas</option>
+        <option value="MT-CUIABA-02">LM Hub_MT_Cuiabá_02</option>
+        <option value="MG-CONTAGEM-IND">LM Hub_MG_Contagem_Industrial</option>
+        <option value="MG-CONTAGEM-01">LM Hub_MG_Contagem_01</option>
+        <option value="MG-CONTAGEM-02">LM Hub_MG_Contagem 02</option>
+        <option value="MG-SAO-JOSE-LAPA">LM Hub_MG_São José da Lapa</option>
+        <option value="MG-VESPASIANO">LM Hub_MG_Vespasiano</option>
+        <option value="MG-BH-02">LM Hub_MG_Belo Horizonte_02</option>
+        <option value="MG-BETIM">LM Hub_MG_Betim</option>
+        <option value="MG-SETE-LAGOAS">LM Hub_MG_Sete Lagoas</option>
+        <option value="MG-GOV-VALADARES">LM Hub_MG_Governador Valadares</option>
+        <option value="MG-IPATINGA">LM Hub_MG_Ipatinga</option>
+        <option value="MG-MONTES-CLAROS">LM Hub_MG_Montes Claros</option>
+        <option value="MG-TEOFILO-OTONI">LM Hub_MG_Teófilo Otoni</option>
+        <option value="MG-BARBACENA">LM Hub_MG_Barbacena</option>
+        <option value="MG-MURIAE">LM Hub_MG_Muriaé</option>
+        <option value="MG-UBA">LM Hub_MG_Ubá</option>
+        <option value="MG-JUIZ-DE-FORA">LM Hub_MG_Juiz de Fora 02</option>
+        <option value="MG-MANHUACU">LM Hub_MG_Manhuaçu</option>
+        <option value="MG-EXTREMA">LM Hub_MG_Extrema</option>
+        <option value="MG-VARGINHA">LM Hub_MG_Varginha</option>
+        <option value="MG-DIVINOPOLIS">LM Hub_MG_Divinópolis</option>
+        <option value="MG-LAGOA-PRATA">LM Hub_MG_Lagoa da Prata</option>
+        <option value="MG-PATOS-MINAS">LM Hub_MG_Patos de Minas</option>
+        <option value="MG-UBERABA">LM Hub_MG_Uberaba</option>
+        <option value="MG-UBERLANDIA">LM Hub_MG_Uberlândia</option>
+        <option value="AM-MANAUS-2">LM Hub_AM_Manaus_2</option>
+        <option value="PA-BELEM">LM Hub_PA_Belém</option>
+        <option value="RO-PORTO-VELHO">LM Hub_RO_Porto Velho</option>
+        <option value="TO-PALMAS">LM Hub_TO_Palmas</option>
       </select>
     </div>
     <div style="margin-bottom:24px;">
@@ -259,14 +276,10 @@ textarea{resize:vertical;min-height:90px;}
   </div>
   <nav class="sidebar-nav">
     <div class="nav-section">Operação</div>
-    <div class="nav-item" onclick="showPage('dashboard')"><i class="ti ti-dashboard"></i> Dashboard</div>
     <div class="nav-item active" onclick="showPage('escala')"><i class="ti ti-calendar-event"></i> Montar Escala</div>
     <div class="nav-item" onclick="showPage('noshow')"><i class="ti ti-alert-triangle"></i> No-Show KPI</div>
     <div class="nav-item" onclick="showPage('disponibilidade')"><i class="ti ti-users"></i> Disponibilidade</div>
     <div class="nav-item" onclick="showPage('rodizio')"><i class="ti ti-refresh"></i> Rodízio</div>
-    <div class="nav-item" onclick="showPage('reversao')"><i class="ti ti-arrow-back-up"></i> Reversão / No-Show</div>
-    <div class="nav-item" onclick="showPage('historico')"><i class="ti ti-history"></i> Histórico de Escalas</div>
-    <div class="nav-item" onclick="showPage('relatorio')"><i class="ti ti-chart-bar"></i> Relatório Mensal</div>
   </nav>
   <div style="padding:8px 16px;border-top:1px solid rgba(255,255,255,.1)">
   <button onclick="doLogout()" style="width:100%;padding:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">
@@ -276,7 +289,6 @@ textarea{resize:vertical;min-height:90px;}
 <div class="sidebar-footer">
     <b>Shopee Logistics</b>
     Last Mile Hub
-    <div style="margin-top:6px;font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.03em">v4.0 · 08/06/2026</div>
   </div>
 </aside>
 
@@ -289,10 +301,6 @@ textarea{resize:vertical;min-height:90px;}
     </div>
     <div class="topbar-right">
       <span id="topbar-status" class="status-badge" style="display:none"></span>
-      <span id="badge-disp" title="Disponibilidade" style="font-size:10px;padding:3px 8px;border-radius:99px;font-weight:700;background:#FFEBEE;color:#B71C1C">👥 –</span>
-      <span id="badge-rot"  title="Roteirização"   style="font-size:10px;padding:3px 8px;border-radius:99px;font-weight:700;background:#FFEBEE;color:#B71C1C">🗺️ –</span>
-      <span id="badge-disp" title="Disponibilidade" style="font-size:10px;padding:3px 8px;border-radius:99px;font-weight:700;background:#FFEBEE;color:#B71C1C">👥 Disp. –</span>
-      <span id="badge-rot"  title="Roteirização"   style="font-size:10px;padding:3px 8px;border-radius:99px;font-weight:700;background:#FFEBEE;color:#B71C1C">🗺️ Rot. –</span>
       <span style="font-size:12px;color:var(--muted);background:var(--sp-light);color:var(--sp-dark);padding:3px 10px;border-radius:99px;font-weight:500" id="topbar-hub"></span>
       <span style="font-size:12px;color:var(--muted)" id="topbar-date"></span>
     </div>
@@ -458,144 +466,6 @@ textarea{resize:vertical;min-height:90px;}
       <div id="disp-content"><div class="no-data">Importe a disponibilidade para ver os dados</div></div>
     </div>
 
-    <!-- ═══════════════ PAGE: REVERSAO ═══════════════ -->
-    <div id="page-reversao" style="display:none">
-      <div class="page-title">Reversão / No-Show</div>
-
-      <div class="card">
-        <div class="card-header">
-          <div class="card-step" style="background:#E65100"><i class="ti ti-alert-triangle" style="font-size:12px"></i></div>
-          <span class="card-title">Rotas com No-Show</span>
-          <span class="card-subtitle">Cole as gaiolas ou ATs — a ferramenta localiza as rotas e aloca novos drivers</span>
-        </div>
-        <div class="card-body">
-          <div style="margin-bottom:14px">
-            <label class="field-label">Gaiolas ou ATs com no-show</label>
-            <textarea id="noshow-input" placeholder="A-1, A-5, B-12&#10;ou&#10;AT2026052152XO1&#10;AT2026052152XO2..." style="min-height:100px"></textarea>
-            <div class="names-hint">Separe por vírgula, ponto-vírgula ou uma por linha</div>
-          </div>
-          <div style="margin-bottom:14px;">
-            <label class="field-label">Turno</label>
-            <div class="turno-group" style="max-width:240px;margin-bottom:0">
-              <div class="turno-option"><input type="radio" name="turno-rev" value="AM" id="rev-am" checked><label for="rev-am"><i class="ti ti-sun" style="font-size:13px"></i>&nbsp;AM</label></div>
-              <div class="turno-option"><input type="radio" name="turno-rev" value="SD" id="rev-sd"><label for="rev-sd"><i class="ti ti-moon" style="font-size:13px"></i>&nbsp;SD</label></div>
-            </div>
-          </div>
-          <button class="btn-primary" style="max-width:280px" onclick="gerarReversao()">
-            <i class="ti ti-search"></i> Buscar rotas e gerar reversão
-          </button>
-        </div>
-      </div>
-
-      <!-- Resultado -->
-      <div id="reversao-results" style="display:none;margin-top:16px">
-        <div class="card">
-          <div class="card-header">
-            <div class="card-step" style="background:var(--green)"><i class="ti ti-check" style="font-size:11px"></i></div>
-            <span class="card-title">Resultado da Reversão</span>
-            <div style="margin-left:auto;display:flex;gap:8px;">
-              <button class="add-entry-btn" style="color:var(--green);border-color:var(--green)" onclick="salvarNoshow()">
-                <i class="ti ti-cloud-upload"></i> Salvar no hub
-              </button>
-              <button class="add-entry-btn" onclick="exportarReversao()">
-                <i class="ti ti-file-spreadsheet"></i> Exportar Excel
-              </button>
-            </div>
-          </div>
-          <div class="results-stats" id="reversao-stats"></div>
-
-          <!-- TABS -->
-          <div class="tabs-bar">
-            <button class="sp-tab active" onclick="switchRevTab('t-rev-escala',this)">
-              <i class="ti ti-list"></i> Nova Escala
-            </button>
-            <button class="sp-tab" onclick="switchRevTab('t-rev-noshow',this)">
-              <i class="ti ti-ban"></i> No-Show&nbsp;<span id="noshow-count" style="background:#FFEBEE;color:#B71C1C;border-radius:99px;padding:1px 7px;font-size:11px">0</span>
-            </button>
-          </div>
-
-          <!-- TAB: Nova Escala -->
-          <div class="tab-body active" id="t-rev-escala">
-            <div class="table-wrap"><table class="data-table">
-              <thead><tr><th>Turno</th><th>Rota</th><th>Gaiola</th><th>AT</th><th>Cluster</th><th>Volume</th><th>G/GG</th><th>Modal pedido</th><th>Motorista sugerido</th><th>ID Driver</th><th>Modal alocado</th><th>Status</th></tr></thead>
-              <tbody id="tbody-reversao"></tbody>
-            </table></div>
-          </div>
-
-          <!-- TAB: No-Show -->
-          <div class="tab-body" id="t-rev-noshow" style="display:none">
-            <div style="display:flex;justify-content:flex-end;padding:12px 0 0">
-              <button class="add-entry-btn" style="color:var(--red);border-color:#ffcdd2" onclick="limparNoshowHist()">
-                <i class="ti ti-trash"></i> Limpar histórico
-              </button>
-            </div>
-            <div class="table-wrap"><table class="data-table">
-              <thead><tr><th>Driver (no-show)</th><th>Rota</th><th>Gaiola</th><th>AT</th><th>Cluster</th><th>Turno</th><th>Data</th></tr></thead>
-              <tbody id="tbody-noshow-hist"></tbody>
-            </table></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-<!-- ═══════════════ PAGE: DASHBOARD ═══════════════ -->
-    <div id="page-dashboard" style="display:none">
-      <div class="page-title">Dashboard — Resumo do dia</div>
-      <div id="dashboard-content"><div class="no-data">Carregando...</div></div>
-    </div>
-
-    <!-- ═══════════════ PAGE: HISTORICO ═══════════════ -->
-    <div id="page-historico" style="display:none">
-      <div class="page-title">Histórico de Escalas</div>
-      <div class="card">
-        <div class="card-header">
-          <div class="card-step"><i class="ti ti-history" style="font-size:12px"></i></div>
-          <span class="card-title">Buscar escalas por período</span>
-        </div>
-        <div class="card-body">
-          <div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;">
-            <div><label class="field-label">Data inicial</label><input type="date" id="hist-data-ini" style="width:160px"></div>
-            <div><label class="field-label">Data final</label><input type="date" id="hist-data-fim" style="width:160px"></div>
-            <div><label class="field-label">Turno</label>
-              <select id="hist-turno" style="width:120px">
-                <option value="">Todos</option>
-                <option value="AM">AM</option>
-                <option value="SD">SD</option>
-                <option value="AMBOS">Ambos</option>
-              </select>
-            </div>
-            <button class="btn-primary" style="max-width:140px;padding:9px" onclick="buscarHistorico()">
-              <i class="ti ti-search"></i> Buscar
-            </button>
-          </div>
-        </div>
-      </div>
-      <div id="historico-content" style="margin-top:16px"><div class="no-data">Selecione um período e clique em Buscar</div></div>
-    </div>
-
-    <!-- ═══════════════ PAGE: RELATORIO ═══════════════ -->
-    <div id="page-relatorio" style="display:none">
-      <div class="page-title">Relatório Mensal</div>
-      <div class="card">
-        <div class="card-header">
-          <div class="card-step"><i class="ti ti-chart-bar" style="font-size:12px"></i></div>
-          <span class="card-title">Filtrar por mês</span>
-        </div>
-        <div class="card-body">
-          <div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;">
-            <div><label class="field-label">Mês/Ano</label><input type="month" id="rel-mes" style="width:180px"></div>
-            <button class="btn-primary" style="max-width:160px;padding:9px" onclick="gerarRelatorio()">
-              <i class="ti ti-report-analytics"></i> Gerar relatório
-            </button>
-            <button class="add-entry-btn" onclick="exportarRelatorio()">
-              <i class="ti ti-file-spreadsheet"></i> Exportar Excel
-            </button>
-          </div>
-        </div>
-      </div>
-      <div id="relatorio-content" style="margin-top:16px"><div class="no-data">Selecione o mês e clique em Gerar relatório</div></div>
-    </div>
-
     <!-- ═══════════════ PAGE: RODIZIO ═══════════════ -->
     <div id="page-rodizio" style="display:none">
       <div class="page-title">Histórico de Rodízio</div>
@@ -634,17 +504,11 @@ const pages = {
   'noshow':         {el:'page-noshow',       title:'No-Show KPI'},
   'disponibilidade':{el:'page-disponibilidade',title:'Disponibilidade'},
   'rodizio':        {el:'page-rodizio',       title:'Histórico de Rodízio'},
-  'reversao':       {el:'page-reversao',      title:'Reversão / No-Show'},
-  'historico':      {el:'page-historico',     title:'Histórico de Escalas'},
-  'relatorio':      {el:'page-relatorio',     title:'Relatório Mensal'},
-  'dashboard':      {el:'page-dashboard',     title:'Dashboard'},
 };
 function showPage(name){
-  Object.values(pages).forEach(p=>{ const el=document.getElementById(p.el); if(el) el.style.display='none'; });
+  Object.values(pages).forEach(p=>document.getElementById(p.el).style.display='none');
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  const pageEl = document.getElementById(pages[name]?.el);
-  if(!pageEl){ console.error('Page not found:', name); return; }
-  pageEl.style.display='block';
+  document.getElementById(pages[name].el).style.display='block';
   document.getElementById('page-title').textContent=pages[name].title;
   document.querySelectorAll('.nav-item').forEach(n=>{
     if(n.getAttribute('onclick')?.includes(name)) n.classList.add('active');
@@ -652,8 +516,6 @@ function showPage(name){
   if(name==='noshow') renderNoShow();
   if(name==='disponibilidade') renderDisponibilidade();
   if(name==='rodizio') renderRodizio();
-  if(name==='dashboard') renderDashboard();
-  if(name==='reversao') loadNoshowHist();
 }
 
 // Set topbar date
@@ -702,26 +564,11 @@ function clearRodizio(){
   if(confirm('Limpar todo o histórico de rodízio?')){ saveRodizio([]); renderRodizio(); }
 }
 function clearRodizioHoje(){
-  if(!confirm('Limpar escala e rodízio de hoje? A escala atual será apagada e você poderá gerar uma nova.')) return;
-  // Limpa rodízio de hoje
   const today = new Date().toLocaleDateString('pt-BR');
   const list = getRodizio().filter(r => r.date !== today);
   saveRodizio(list);
-  // Limpa escala do localStorage
-  try{ localStorage.removeItem('shopee_lastAllRows'); }catch(e){}
-  try{ localStorage.removeItem('shopee_lastTurno'); }catch(e){}
-  // Limpa estado em memória
-  allRows = []; livresData = []; alertas = [];
-  // Esconde o bloco de resultados
-  const resEl = document.getElementById('results');
-  if(resEl) resEl.style.display = 'none';
-  // export-btn mantido habilitado para permitir exportar mesmo após limpar
   renderRodizio();
-  // Sincroniza limpeza no Supabase também
-  if(typeof syncRodizioToHub === 'function' && currentHub){
-    const escalados = [];
-    syncRodizioToHub(escalados, '__clear_today__');
-  }
+  alert('Registros de hoje removidos. Agora pode gerar a escala normalmente.');
 }
 function importarRodizio(){
   document.getElementById('rodizio-import-input').click();
@@ -763,21 +610,6 @@ function exportarRodizio(){
 function getRodizioJanela(){
   return parseInt(document.getElementById('rodizio-days')?.value||'3')||3;
 }
-function diasSeguidos(nameNorm){
-  // Conta quantos dias CONSECUTIVOS até hoje o driver foi escalado
-  const list = getRodizio().filter(r=>nrm(r.name)===nameNorm);
-  if(!list.length) return 0;
-  const hoje = new Date();
-  let dias = 0;
-  for(let i=0; i<7; i++){
-    const d = new Date(hoje); d.setDate(d.getDate()-i);
-    const ds = d.toLocaleDateString('pt-BR');
-    if(list.some(r=>r.date===ds)) dias++;
-    else break;
-  }
-  return dias;
-}
-
 function vezesRodou(nameNorm){
   const list = getRodizio();
   const dias = getRodizioJanela();
@@ -946,12 +778,8 @@ async function loadDisp(inp){
     const buf=await f.arrayBuffer();
     const wb=XLSX.read(buf,{type:'array'});
     dispData=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:''});
-    try{ localStorage.setItem('shopee_dispData', JSON.stringify(dispData)); }catch(e){}
-    const bdDisp=document.getElementById('badge-disp');
-    if(bdDisp){ bdDisp.textContent=`👥 ${dispData.length}`; bdDisp.style.background='#E6F9EE'; bdDisp.style.color='#0A7A33'; }
     const keys=Object.keys(dispData[0]||{});
     const colDia=keys[5]||'?';
-
     let am=0,sd=0,both=0,dupes=0;
     const seenIds=new Set();
     dispData.forEach(d=>{
@@ -996,9 +824,6 @@ async function loadEscala(inp){
       g:parseInt(r['G']||0)||0,
       gg:parseInt(r['GG']||0)||0
     }));
-    try{ localStorage.setItem('shopee_escData', JSON.stringify(escData)); }catch(e){}
-    const bdRot=document.getElementById('badge-rot');
-    if(bdRot){ bdRot.textContent=`🗺️ ${escData.length}`; bdRot.style.background='#E6F9EE'; bdRot.style.color='#0A7A33'; }
     const ciclos=[...new Set(escData.map(r=>r.turno).filter(Boolean))];
     btn.textContent=`✓ ${f.name} | ${escData.length} rotas | ciclos: ${ciclos.join(', ')}`;
     btn.className='file-upload loaded';
@@ -1050,8 +875,7 @@ function runEscala(){
       noShow:Number(d['No Show Time']||0),
       noshow:Number(d['No Show Time']||0),
       id:String(d['Driver ID']||''),
-      isSDOnly: turno==='SD',
-      isAMOnly: turno==='AM'
+      isSDOnly: turno==='SD'
     };
   }).filter(d=>d&&!penalizados.includes(d.nameNorm));
 
@@ -1072,16 +896,14 @@ function runEscala(){
   const isPloated=d=>isPloatedByName(d.nameNorm);
 
   // FIX 4: Auto-block por NS threshold + bloquear escalados hoje no mesmo turno
-  // REGRA: plotados NUNCA são bloqueados por NS nem por rodízio — sem exceção
   const nsThreshold = parseInt(document.getElementById('ns-threshold')?.value||'0');
   const available = _deduped2.filter(d => {
+    // Plotados NUNCA são bloqueados — nem por rodízio nem por escaladosHoje
     const ehPlotado = isPloatedByName(d.nameNorm);
-    // Plotado: passa sempre, independente de NS ou rodízio
-    if(ehPlotado) return true;
-    // Já rodou hoje em outro turno — bloqueado
-    if(escaladosHoje.has(d.nameNorm)) return false;
-    // NS acima do threshold — bloqueado
-    if(nsThreshold > 0 && d.noShow >= nsThreshold){
+    // Já rodou hoje em outro turno — bloqueado (exceto plotados)
+    if(!ehPlotado && escaladosHoje.has(d.nameNorm)) return false;
+    // NS acima do threshold — bloqueado (exceto plotados)
+    if(nsThreshold > 0 && d.noShow >= nsThreshold && !ehPlotado){
       alertas.push({rota:'-', cluster:d.cluster, modal:d.modal,
         msg:'Driver bloqueado por NS=' + d.noShow + ': ' + d.name});
       return false;
@@ -1147,51 +969,25 @@ function runEscala(){
   });
 
   // ── PRÉ-ALOCAÇÃO DE PLOTADOS ─────────────────────────────
-  // Busca todos os drivers plotados disponíveis (nunca bloqueados por NS/rodízio)
+  // Busca todos os drivers plotados disponíveis (nunca bloqueados)
   const todosDisponiveis = _deduped2.filter(d=>!penalizados.includes(d.nameNorm));
   const plotadosDisponiveis = todosDisponiveis
     .filter(d=>isPloated(d))
-    .sort((a,b)=> a.cluster.split(',').length - b.cluster.split(',').length); // menos opções = prioridade maior
+    .sort((a,b)=> a.cluster.split(',').length - b.cluster.split(',').length);
 
   const plotadosUsados = new Set();
-  const rotasUsadasPlotado = new Set();
   const plotadoReserva = {};
 
-  // MATCHING BIPARTIDO: itera pelos PLOTADOS (não pelas rotas)
-  // Garante que cada plotado receba UMA rota — plotados com menos clusters têm prioridade
-  // Para cada plotado: encontra a maior rota disponível compatível com seu modal e cluster
-  plotadosDisponiveis.forEach(plotado => {
-    const modalOrder = getModalOrder(0, plotado.modal, 0, 0);
-    if(modalOrder[0]==='MOTO') return; // plotados moto não são pré-alocados
-
-    // Candidatas: rotas compatíveis com cluster e modal, não-moto, ainda não reservadas
-    const candidatas = rotasFiltradas
-      .filter(rota => {
-        if(rotasUsadasPlotado.has(rota.rota)) return false;
-        const mo = getModalOrder(rota.volume, rota.modal||'', rota.g||0, rota.gg||0);
-        if(mo[0]==='MOTO') return false;
-        // Modal compatível: FIORINO e PASSEIO são intercambiáveis (não-moto)
-        // MOTO só vai em rota MOTO; VAN só em rota que aceita VAN
-        const pModal = plotado.modal;
-        if(pModal === 'VAN' && !mo.includes('VAN')) return false;
-        if(pModal === 'MOTO') return false; // já filtrado acima
-        // FIORINO e PASSEIO: podem ir em qualquer rota não-moto
-        if(!driverFitCluster(plotado.cluster, rota.cluster)) return false;
-        return true;
-      })
-      .sort((a,b)=>{
-        // Prioriza a maior rota disponível (volume + GG + G)
-        const sA = parseVol(a.volume) + (parseInt(a.gg)||0)*200 + (parseInt(a.g)||0)*50;
-        const sB = parseVol(b.volume) + (parseInt(b.gg)||0)*200 + (parseInt(b.g)||0)*50;
-        return sB - sA;
-      });
-
-    if(candidatas.length > 0){
-      const rota = candidatas[0];
-      plotadosUsados.add(plotado.nameNorm);
-      rotasUsadasPlotado.add(rota.rota);
-      plotadoReserva[rota.rota] = plotado;
-    }
+  rotasFiltradas.forEach(rota=>{
+    const rCluster = rota.cluster;
+    const modalOrder = getModalOrder(rota.volume, rota.modal||'', rota.g||0, rota.gg||0);
+    if(modalOrder[0]==='MOTO') return; // plotados nunca em moto
+    const p = plotadosDisponiveis.find(d=>{
+      if(plotadosUsados.has(d.nameNorm)) return false;
+      if(!driverFitCluster(d.cluster, rCluster)) return false;
+      return true; // plotado vai em qualquer rota não-moto do seu cluster
+    });
+    if(p){ plotadosUsados.add(p.nameNorm); plotadoReserva[rota.rota]=p; }
   });
 
   rotasFiltradas.forEach(rota=>{
@@ -1214,15 +1010,9 @@ function runEscala(){
         const bVezes=vezesRodou(b.nameNorm);
         if(aVezes!==bVezes) return aVezes-bVezes;
         if(isSdRota){
-          // Rotas SD: prioriza drivers SÓ SD (preserva AMBOS para AM)
           const aSD=a.isSDOnly?0:1;
           const bSD=b.isSDOnly?0:1;
           if(aSD!==bSD) return aSD-bSD;
-        } else {
-          // Rotas AM: prioriza drivers SÓ AM (preserva AMBOS para SD)
-          const aAM=a.isAMOnly?0:1;
-          const bAM=b.isAMOnly?0:1;
-          if(aAM!==bAM) return aAM-bAM;
         }
         // 1ª prioridade: primeiro cluster do driver bate com a rota
         const aFirst = firstClusterMatch(a, rCluster) ? 0 : 1;
@@ -1232,9 +1022,7 @@ function runEscala(){
         const aClusters = (a.cluster||'').split(',').length;
         const bClusters = (b.cluster||'').split(',').length;
         if(aClusters!==bClusters) return aClusters-bClusters;
-        // NS invertido: NS=0 primeiro, NS alto por último
-        if(a.noShow!==b.noShow) return a.noShow-b.noShow;
-        return 0;
+        return a.noShow-b.noShow;
       });
     }
 
@@ -1258,14 +1046,7 @@ function runEscala(){
         driverFitCluster(d.cluster, rCluster)
       ) : null);
     // Plotado aloca com o modal pedido pela rota (não o modal do driver)
-    if(pMatch){
-      chosen=pMatch;
-      // Verificar se plotado foi para cluster principal ou secundário
-      const primeiroCluster = (pMatch.cluster||'').split(',')[0].trim();
-      const ehClusterPrincipal = firstClusterMatch(pMatch, rCluster);
-      status = ehClusterPrincipal ? 'plotado' : 'plotado_secundario';
-      allocModal=modalOrder[0]==='MOTO'?'MOTO':pMatch.modal;
-    }
+    if(pMatch){ chosen=pMatch; status='plotado'; allocModal=modalOrder[0]==='MOTO'?'MOTO':pMatch.modal; }
     } // end if(!chosen) for van check
     if(!chosen){
       let found=false;
@@ -1402,14 +1183,13 @@ function renderResults(){
   renderRelatorio();
   renderRodizio();
   renderNoShow();
-  afterRenderResults();
 }
 
 function renderEsc(rows){
   const b=document.getElementById('tbody-escala');
   if(!rows.length){b.innerHTML=`<tr><td colspan="9" class="no-result">Nenhuma rota encontrada</td></tr>`;return;}
   b.innerHTML=rows.map(r=>{
-    const sb=r.status==='plotado_secundario'?`<span class="badge bsp-plotado" title="Plotado alocado fora do cluster principal" style="background:#FFF3E0;color:#E65100;border:1px solid #FF9500">Plotado ⚠️</span>`:r.status==='plotado'?`<span class="badge bsp-plotado">Plotado</span>`:
+    const sb=r.status==='plotado'?`<span class="badge bsp-plotado">Plotado</span>`:
       r.status==='ok'?`<span class="badge bsp-ok">OK</span>`:
       r.status==='volume'?`<span class="badge bsp-vol">Volume</span>`:
       r.status==='substituido'?`<span class="badge bsp-sub">VAN→Fiorino</span>`:
@@ -1428,7 +1208,7 @@ function renderEsc(rows){
       <td>${volStr}</td>
       <td style="font-size:12px">${r.gg>0?`<span class="badge bsp-err">GG:${r.gg}</span>`:r.g>0?`<span class="badge bsp-sub">G:${r.g}</span>`:'-'}</td>
       <td>${modalBadge(r.modalPedido)}</td>
-      <td style="font-weight:500">${r.driver}${diasSeguidos(nrm(r.driver||''))>=3?` <span style="font-size:10px;background:#FFEBEE;color:#B71C1C;padding:1px 6px;border-radius:99px;font-weight:700" title="Rodou ${diasSeguidos(nrm(r.driver||''))} dias seguidos">🔄 Rod. forçado</span>`:''}</td>
+      <td style="font-weight:500">${r.driver}</td>
       <td style="font-size:12px;color:var(--sp-text-muted)">${r.driverId||'-'}</td>
       <td>${r.allocModal?modalBadge(r.allocModal):'-'}</td>
       <td>${sb}</td>
@@ -1747,17 +1527,6 @@ function renderNSTable(drivers, maxNS){
   </table>`;
 }
 
-function nsTendencia(noshow, name){
-  // Analisa histórico local de no-show para tendência
-  // Retorna seta de tendência baseada no NS atual vs média esperada
-  // (simplificado: usa NS atual como proxy)
-  if(noshow === 0) return '<span style="color:#4caf50;font-size:13px" title="Sem histórico">✓</span>';
-  if(noshow >= 5)  return '<span style="color:#f44336;font-size:13px" title="Alto risco">↑↑</span>';
-  if(noshow >= 3)  return '<span style="color:#ff9800;font-size:13px" title="Atenção">↑</span>';
-  if(noshow >= 1)  return '<span style="color:#ffc107;font-size:13px" title="Baixo risco">→</span>';
-  return '';
-}
-
 function filterNS(){
   const q = nrm(document.getElementById('ns-search').value);
   const maxNS = nsAllDrivers[0]?.noshow||1;
@@ -1790,16 +1559,7 @@ function renderDisponibilidade(){
 
   function getFiltered(view){
     if(view==='am')  return drivers.filter(d=>d.turno==='AM'||d.turno==='AMBOS');
-    if(view==='sd'){
-      // Desconta drivers AMBOS que já foram escalados no AM
-      const escaladosAM = new Set(allRows.filter(r=>r.driverObj).map(r=>nrm(r.driverObj.name||'')));
-      return drivers.filter(d=>{
-        if(d.turno!=='SD' && d.turno!=='AMBOS') return false;
-        // Se AMBOS e já escalado no AM → não aparece no SD
-        if(d.turno==='AMBOS' && escaladosAM.has(nrm(d.name))) return false;
-        return true;
-      });
-    }
+    if(view==='sd')  return drivers.filter(d=>d.turno==='SD'||d.turno==='AMBOS');
     return drivers.filter(d=>d.turno!==null); // geral = todos confirmados
   }
 
@@ -1814,10 +1574,6 @@ function renderDisponibilidade(){
     const sdOnly  = drivers.filter(d=>d.turno==='SD').length;
     const ambos   = drivers.filter(d=>d.turno==='AMBOS').length;
     const pending = drivers.filter(d=>d.turno===null).length;
-    // Desconto SD: AMBOS já escalados no AM
-    const escaladosAMSet = new Set(allRows.filter(r=>r.driverObj).map(r=>nrm(r.driverObj.name||'')));
-    const ambosJaEscalados = drivers.filter(d=>d.turno==='AMBOS' && escaladosAMSet.has(nrm(d.name))).length;
-    const sdLivre = (view==='sd') ? list.length : (sdOnly + ambos - ambosJaEscalados);
 
     let html = `
       <div class="disp-toggle">
@@ -1840,11 +1596,7 @@ function renderDisponibilidade(){
     } else {
       const {amStart,sdStart}=getHorarios();
     const label = view==='am'?`AM (${amStart})`:`SD / PM1 (${sdStart})`;
-      const temEscalaAM = allRows.length > 0 && allRows.some(r=>r.turno==='AM'||r.turno==='am');
-      const descontoInfo = (view==='sd' && temEscalaAM && ambosJaEscalados>0)
-        ? ` <span style="font-size:10px;background:#FFF3E0;color:#E65100;padding:2px 7px;border-radius:99px;font-weight:700;margin-left:6px">-${ambosJaEscalados} escalados AM</span>`
-        : '';
-      html += `<div class="kpi-card"><div class="kpi-num" style="color:#1a1a1a">${total}</div><div class="kpi-label">Disponíveis ${label}${descontoInfo}</div></div>`;
+      html += `<div class="kpi-card"><div class="kpi-num" style="color:#1a1a1a">${total}</div><div class="kpi-label">Disponíveis ${label}</div></div>`;
       modals.forEach(m=>{
         html += `<div class="kpi-card"><div class="kpi-num" style="color:${colors[m]}">${byModal[m]}</div><div class="kpi-label">${m}</div></div>`;
       });
@@ -1880,7 +1632,7 @@ function renderDisponibilidade(){
             <tbody>${mDrivers.sort((a,b)=>a.noshow-b.noshow).map(d=>`<tr>
               <td style="font-weight:600">${d.name}</td>
               <td>${turnoBadge(d.turno==='AMBOS'?'AMBOS':d.turno)}</td>
-              <td><span style="font-weight:700;color:${d.noshow>=5?'#f44336':d.noshow>=3?'#ff9800':d.noshow>=1?'#ffc107':'#4caf50'}">${d.noshow}</span> ${nsTendencia(d.noshow,d.name)}</td>
+              <td><span style="font-weight:700;color:${d.noshow>=5?'#f44336':d.noshow>=3?'#ff9800':d.noshow>=1?'#ffc107':'#4caf50'}">${d.noshow}</span></td>
               <td style="font-size:11px;color:#888;max-width:200px">${d.cluster||'-'}</td>
             </tr>`).join('')}</tbody>
           </table></div>
@@ -1911,7 +1663,7 @@ function exportarTudo(){
       'Modal pedido': String(r.modalPedido||''),
       'Motorista sugerido': String(r.driver||''),
       'Modal alocado': String(r.allocModal||''),
-      'Status': r.status==='plotado_secundario'?'Plotado (cluster sec.)':r.status==='plotado'?'Plotado':
+      'Status': r.status==='plotado'?'Plotado':
                 r.status==='ok'?'OK':
                 r.status==='volume'?'Volume':
                 r.status==='substituido'?'VAN-Fiorino':
@@ -2281,7 +2033,14 @@ async function doLogin(){
 
   try{
     const inputHash = await sha256(senha);
-    const resp = await fetch(SB_URL + '/rest/v1/hubs?select=hub_code,hub_name,password_hash&hub_code=eq.' + hubCode, {headers: SB_HEADERS});
+    const url = 'https://tslhvfvwhybaqhkwbgyl.supabase.co/rest/v1/hubs?select=hub_code,hub_name,password_hash&hub_code=eq.' + hubCode;
+    const resp = await fetch(url, {
+      headers: {
+        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRzbGh2ZnZ3aHliYXFoa3diZ3lsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk3NjcwMzgsImV4cCI6MjA5NTM0MzAzOH0.pHUeMP1XDDdchCLA1aklnWUEowO_IJaT2svvR8wajH4',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRzbGh2ZnZ3aHliYXFoa3diZ3lsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk3NjcwMzgsImV4cCI6MjA5NTM0MzAzOH0.pHUeMP1XDDdchCLA1aklnWUEowO_IJaT2svvR8wajH4',
+        'Accept': 'application/json'
+      }
+    });
     if(!resp.ok){ erro.style.display='block'; erro.textContent='Erro HTTP: ' + resp.status; return; }
     const data = await resp.json();
     if(!data || !data.length){ erro.style.display='block'; erro.textContent='Hub não encontrado: ' + hubCode; return; }
@@ -2291,8 +2050,6 @@ async function doLogin(){
     sessionStorage.setItem('hub', JSON.stringify(currentHub));
     showApp();
     await loadHubData();
-    restoreFromStorage(); // plotados já carregados do Supabase
-    resetSessionTimer(); // inicia contagem de timeout
   }catch(e){
     erro.style.display='block'; erro.textContent='Erro: ' + e.message;
   }
@@ -2304,8 +2061,6 @@ function showApp(){
   document.querySelector('.main-wrap').style.display = 'flex';
   const hubEl = document.getElementById('topbar-hub');
   if(hubEl && currentHub) hubEl.textContent = currentHub.hub_name;
-  initDefaultDates();
-  // restoreFromStorage é chamado após loadHubData (para garantir plotados carregados)
 }
 
 async function loadHubData(){
@@ -2325,8 +2080,6 @@ async function loadHubData(){
     if(pen && pen.length){
       document.getElementById('bulk-penalizados').value = pen.map(p=>p.driver_name).join('\n');
     }
-    // Load no-show history
-    await loadNoshowHist();
   }catch(e){ console.error('loadHubData:', e); }
 }
 
@@ -2365,806 +2118,17 @@ function doLogout(){
 }
 
 // Auto-login se sessão existir (após página carregar)
-window.addEventListener('load', async function(){
+window.addEventListener('load', function(){
   const stored = sessionStorage.getItem('hub');
   if(stored){
     try{
       currentHub = JSON.parse(stored);
       showApp();
-      await loadHubData(); // aguarda plotados/penalizados do Supabase
-      restoreFromStorage(); // só então re-renderiza escala com plotados corretos
-      resetSessionTimer(); // inicia contagem de timeout
+      loadHubData();
     }catch(e){ sessionStorage.removeItem('hub'); }
   }
 });
-
-// ── REVERSÃO / NO-SHOW ────────────────────────────────────────────
-let reversaoRows = [];
-
-function switchRevTab(id, btn){
-  document.querySelectorAll('#page-reversao .tab-body').forEach(t=>t.style.display='none');
-  document.querySelectorAll('#page-reversao .sp-tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById(id).style.display='block';
-  btn.classList.add('active');
-}
-
-function gerarReversao(){
-  // Tenta restaurar do localStorage se não estiver em memória
-  if(!escData.length){
-    try{ const s=localStorage.getItem('shopee_escData'); if(s) escData=JSON.parse(s); }catch(e){}
-  }
-  if(!dispData.length){
-    try{ const s=localStorage.getItem('shopee_dispData'); if(s) dispData=JSON.parse(s); }catch(e){}
-  }
-  if(!escData.length){ alert('Importe a roteirização primeiro.\nDica: recarregue e importe o arquivo CSV novamente.'); return; }
-  if(!dispData.length){ alert('Importe a disponibilidade primeiro.\nDica: recarregue e importe o arquivo XLSX novamente.'); return; }
-
-  const input = document.getElementById('noshow-input').value||'';
-  const turnoRev = document.querySelector('input[name="turno-rev"]:checked').value;
-  const tokens = input.replace(/[\r]/g,'').split(/[,;\n]+/).map(t=>t.trim().toUpperCase()).filter(t=>t);
-  if(!tokens.length){ alert('Cole pelo menos uma gaiola ou AT.'); return; }
-
-  // Find matching routes
-  const rotasNoshow = escData.filter(r=>{
-    const g=(r.letra||'').toUpperCase();
-    const at=(r.at||'').toUpperCase();
-    return tokens.some(t=>t===g||t===at);
-  });
-
-  if(!rotasNoshow.length){
-    alert('Nenhuma rota encontrada. Verifique as gaiolas/ATs e a roteirização importada.');
-    return;
-  }
-
-  // Build available pool - drivers not yet used today
-  const escaladosHoje = getEscaladosHoje();
-  const keys = Object.keys(dispData[0]||{});
-  const todayCol = keys[5]||null;
-  const penalizados = getPenalizados();
-
-  // Drivers já escalados na escala principal (não podem ser re-escalados)
-  const jaEscalados = new Set(
-    allRows.filter(r=>r.status!=='sem_driver').map(r=>nrm(r.driver))
-  );
-
-  const available = dispData.map(d=>{
-    const turno = parseTurno(String(d[todayCol]||''));
-    if(!turno) return null;
-    const fit=(turnoRev==='AM'&&(turno==='AM'||turno==='AMBOS'))||
-              (turnoRev==='SD'&&(turno==='SD'||turno==='AMBOS'));
-    if(!fit) return null;
-    if(penalizados.includes(nrm(d['Driver Name']||''))) return null;
-    // Excluir quem já está na escala principal
-    if(jaEscalados.has(nrm(d['Driver Name']||''))) return null;
-    return{
-      name:String(d['Driver Name']||''),
-      nameNorm:nrm(d['Driver Name']||''),
-      id:String(d['Driver ID']||''),
-      cluster:String(d['Cluster']||''),
-      modal:String(d['Vehicle Type']||'').toUpperCase().replace('PASSAIO','PASSEIO'),
-      noShow:Number(d['No Show Time']||0),
-      turno
-    };
-  }).filter(d=>d);
-
-  // Allocate
-  reversaoRows = [];
-  const usedRev = new Set();
-
-  rotasNoshow.forEach(rota=>{
-    const rCluster = rota.cluster;
-    const modalOrder = getModalOrder(rota.volume, rota.modal||'', rota.g||0, rota.gg||0);
-    const modalPedido = modalOrder[0];
-    let chosen=null, allocModal='', status='';
-    const volFlag = parseVol(rota.volume)>800;
-
-    for(const tryModal of modalOrder){
-      const cands = available.filter(d=>
-        !usedRev.has(d.nameNorm)&&
-        d.modal===tryModal&&
-        driverFitCluster(d.cluster, rCluster)
-      ).sort((a,b)=>a.noShow-b.noShow);
-      if(cands.length){ chosen=cands[0]; allocModal=tryModal; status=tryModal===modalPedido?'ok':'substituido'; break; }
-    }
-    if(!chosen) status='sem_driver';
-    if(chosen) usedRev.add(chosen.nameNorm);
-
-    reversaoRows.push({
-      turno:rota.turno, rota:rota.rota, letra:rota.letra,
-      cluster:rCluster, volume:rota.volume,
-      g:rota.g||0, gg:rota.gg||0,
-      modalPedido, driver:chosen?chosen.name:'— sem motorista —',
-      driverId:chosen?chosen.id:'',
-      allocModal, status, driverObj:chosen, at:rota.at||''
-    });
-  });
-
-  // Auto-populate no-show history with original drivers from allRows
-  const today = new Date().toLocaleDateString('pt-BR');
-  const hist = getNoshowHistLocal();
-  tokens.forEach(token=>{
-    const rota = escData.find(r=>{
-      const g=(r.letra||'').toUpperCase(), at=(r.at||'').toUpperCase();
-      return token===g||token===at;
-    });
-    const original = allRows.find(e=>{
-      const g=(e.letra||'').toUpperCase(), at=(e.at||'').toUpperCase();
-      return token===g||token===at;
-    });
-    const driverName = original && original.driver && !original.driver.includes('sem motorista')
-      ? original.driver : 'Não identificado';
-    const alreadyExists = hist.some(h=>h.gaiola===(rota?rota.letra:token)&&h.noshow_date===today);
-    if(!alreadyExists){
-      hist.push({
-        driver_name: driverName,
-        rota: rota?rota.rota:token,
-        gaiola: rota?rota.letra:token,
-        at: rota?rota.at:'',
-        cluster: rota?rota.cluster:'',
-        turno: turnoRev,
-        noshow_date: today
-      });
-    }
-  });
-  saveNoshowHistLocal(hist);
-
-  renderReversao();
-  renderNoshowHist();
-  document.getElementById('reversao-results').style.display='block';
-}
-
-function renderReversao(){
-  const b=document.getElementById('tbody-reversao');
-  const total=reversaoRows.length;
-  const ok=reversaoRows.filter(r=>r.status==='ok').length;
-  const sub=reversaoRows.filter(r=>r.status==='substituido').length;
-  const sem=reversaoRows.filter(r=>r.status==='sem_driver').length;
-
-  document.getElementById('reversao-stats').innerHTML=
-    '<div class="stat-box"><div class="num">'+total+'</div><div class="lbl">Rotas</div></div>'+
-    '<div class="stat-box"><div class="num" style="color:var(--green)">'+ok+'</div><div class="lbl">Alocadas OK</div></div>'+
-    '<div class="stat-box"><div class="num" style="color:var(--orange)">'+sub+'</div><div class="lbl">Substituição</div></div>'+
-    '<div class="stat-box"><div class="num" style="color:var(--red)">'+sem+'</div><div class="lbl">Sem motorista</div></div>';
-
-  b.innerHTML=reversaoRows.map(function(r){
-    const sb=r.status==='ok'?'<span class="badge bsp-ok">OK</span>':
-             r.status==='substituido'?'<span class="badge bsp-sub">Substituição</span>':
-             '<span class="badge bsp-err">Sem motorista</span>';
-    const vol=parseVol(r.volume);
-    const volStr=vol>0?vol.toLocaleString('pt-BR')+'L':'-';
-    const ggStr=r.gg>0?'<span class="badge bsp-err">GG:'+r.gg+'</span>':r.g>0?'<span class="badge bsp-sub">G:'+r.g+'</span>':'-';
-    return'<tr class="'+(r.status==='sem_driver'?'err-row':'')+'">'+
-      '<td>'+turnoBadge(r.turno)+'</td>'+
-      '<td style="font-weight:500">'+r.rota+'</td>'+
-      '<td style="color:var(--muted);font-size:12px">'+r.letra+'</td>'+
-      '<td style="font-size:11px;color:var(--muted)">'+( r.at||'-')+'</td>'+
-      '<td style="font-size:12px">'+r.cluster+'</td>'+
-      '<td style="font-size:12px">'+volStr+'</td>'+
-      '<td>'+ggStr+'</td>'+
-      '<td>'+modalBadge(r.modalPedido)+'</td>'+
-      '<td style="font-weight:500">'+r.driver+'</td>'+
-      '<td style="font-size:12px;color:var(--muted)">'+( r.driverId||'-')+'</td>'+
-      '<td>'+(r.allocModal?modalBadge(r.allocModal):'-')+'</td>'+
-      '<td>'+sb+'</td>'+
-    '</tr>';
-  }).join('');
-}
-
-// No-show history — local storage
-function getNoshowHistLocal(){
-  try{ return JSON.parse(localStorage.getItem('shopee_noshow_'+((currentHub&&currentHub.hub_code)||'local'))||'[]'); }
-  catch(e){ return []; }
-}
-function saveNoshowHistLocal(list){
-  try{ localStorage.setItem('shopee_noshow_'+((currentHub&&currentHub.hub_code)||'local'), JSON.stringify(list)); }catch(e){}
-}
-
-function renderNoshowHist(){
-  const hist = getNoshowHistLocal();
-  const b = document.getElementById('tbody-noshow-hist');
-  const ct = document.getElementById('noshow-count');
-  if(ct) ct.textContent = hist.length;
-  if(!b) return;
-  if(!hist.length){
-    b.innerHTML='<tr><td colspan="7" class="no-data">Nenhum no-show registrado ainda</td></tr>';
-    return;
-  }
-  b.innerHTML=[...hist].reverse().map(function(r){
-    return'<tr>'+
-      '<td style="font-weight:500;color:var(--red)">'+r.driver_name+'</td>'+
-      '<td style="font-size:12px">'+( r.rota||'-')+'</td>'+
-      '<td style="font-size:12px;color:var(--muted)">'+( r.gaiola||'-')+'</td>'+
-      '<td style="font-size:11px;color:var(--muted)">'+( r.at||'-')+'</td>'+
-      '<td style="font-size:12px">'+( r.cluster||'-')+'</td>'+
-      '<td>'+turnoBadge(r.turno)+'</td>'+
-      '<td style="font-size:12px;color:var(--muted)">'+r.noshow_date+'</td>'+
-    '</tr>';
-  }).join('');
-}
-
-function limparNoshowHist(){
-  if(confirm('Limpar todo o histórico de no-show?')){
-    saveNoshowHistLocal([]);
-    renderNoshowHist();
-  }
-}
-
-async function salvarNoshow(){
-  if(!currentHub){ alert('Faça login primeiro.'); return; }
-  const hist = getNoshowHistLocal();
-  if(!hist.length){ alert('Nenhum no-show para salvar.'); return; }
-  const rows = hist.map(h=>({
-    hub_code: currentHub.hub_code,
-    driver_name: h.driver_name,
-    rota: h.rota||'',
-    gaiola: h.gaiola||'',
-    turno: h.turno,
-    noshow_date: h.noshow_date
-  }));
-  const ok = await sbPost('noshow', rows);
-  if(ok){ alert('No-show salvo no hub!'); }
-  else alert('Erro ao salvar. Tente novamente.');
-}
-
-async function loadNoshowHist(){
-  if(!currentHub) return;
-  try{
-    const data = await sbFetch('noshow','select=*&hub_code=eq.'+encodeURIComponent(currentHub.hub_code)+'&order=created_at.desc&limit=100');
-    if(data && data.length){
-      saveNoshowHistLocal(data.map(r=>({
-        driver_name:r.driver_name, rota:r.rota, gaiola:r.gaiola,
-        at:r.at||'', cluster:r.cluster||'', turno:r.turno, noshow_date:r.noshow_date
-      })));
-      renderNoshowHist();
-    }
-  }catch(e){ console.error('loadNoshowHist:', e); }
-}
-
-function exportarReversao(){
-  if(!reversaoRows.length){ alert('Gere a reversão primeiro.'); return; }
-  const wb = XLSX.utils.book_new();
-  const data = reversaoRows.map(r=>({
-    'Turno':r.turno,'Rota':r.rota,'Gaiola':r.letra,'AT':r.at||'',
-    'Cluster':r.cluster,'Volume':parseVol(r.volume)||'',
-    'G':r.g||0,'GG':r.gg||0,
-    'Modal pedido':r.modalPedido,
-    'Motorista sugerido':r.driver,'ID Driver':r.driverId||'',
-    'Modal alocado':r.allocModal||'','Status':r.status
-  }));
-  const ws = XLSX.utils.json_to_sheet(data);
-  styleSheet(ws, data.length);
-  XLSX.utils.book_append_sheet(wb, ws, 'Nova Escala');
-
-  const hist = getNoshowHistLocal();
-  if(hist.length){
-    const ws2 = XLSX.utils.json_to_sheet(hist.map(h=>({
-      'Driver (no-show)':h.driver_name,'Rota':h.rota,'Gaiola':h.gaiola,
-      'AT':h.at||'','Cluster':h.cluster||'','Turno':h.turno,'Data':h.noshow_date
-    })));
-    styleSheet(ws2, hist.length);
-    XLSX.utils.book_append_sheet(wb, ws2, 'No-Show');
-  }
-  XLSX.writeFile(wb, 'Reversao_'+new Date().toLocaleDateString('pt-BR').split('/').join('-')+'.xlsx');
-}
-
-// ── SALVAR ESCALA NO HISTÓRICO ────────────────────────────────────
-async function salvarEscalaHistorico(turnoSel){
-  if(!currentHub){ console.log('salvarEscala: sem login'); return; }
-  if(!allRows.length){ console.log('salvarEscala: allRows vazio'); return; }
-  console.log('Salvando escala...', turnoSel, allRows.length, 'rotas');
-  try{
-    const today = new Date().toLocaleDateString('pt-BR');
-    const escalaJson = JSON.stringify(allRows.map(r=>({
-      turno:r.turno, rota:r.rota, letra:r.letra, at:r.at||'',
-      cluster:r.cluster, volume:r.volume, g:r.g||0, gg:r.gg||0,
-      modalPedido:r.modalPedido, driver:r.driver, driverId:r.driverId||'',
-      allocModal:r.allocModal, status:r.status
-    })));
-    await sbPost('escalas', [{
-      hub_code: currentHub.hub_code,
-      turno: turnoSel,
-      data_escala: today,
-      total_rotas: allRows.length,
-      total_alocadas: allRows.filter(r=>r.status!=='sem_driver').length,
-      total_sem_motorista: allRows.filter(r=>r.status==='sem_driver').length,
-      escala_json: escalaJson
-    }]);
-  }catch(e){ console.error('salvarEscalaHistorico:', e); }
-}
-
-// ── DASHBOARD ────────────────────────────────────────────────────
-async function renderDashboard(){
-  const c = document.getElementById('dashboard-content');
-  if(!c) return;
-  if(!currentHub){ c.innerHTML='<div class="no-data">Faça login para ver o dashboard</div>'; return; }
-  c.innerHTML='<div class="no-data">Carregando...</div>';
-  
-  try{
-    const today = new Date().toLocaleDateString('pt-BR');
-    
-    // Load today's data
-    const [escalasHoje, noshowHoje, rodizioHoje] = await Promise.all([
-      sbFetch('escalas', 'select=*&hub_code=eq.'+encodeURIComponent(currentHub.hub_code)+'&data_escala=eq.'+encodeURIComponent(today)+'&order=created_at.desc'),
-      sbFetch('noshow', 'select=*&hub_code=eq.'+encodeURIComponent(currentHub.hub_code)+'&noshow_date=eq.'+encodeURIComponent(today)),
-      sbFetch('rodizio', 'select=*&hub_code=eq.'+encodeURIComponent(currentHub.hub_code)+'&ride_date=eq.'+encodeURIComponent(today))
-    ]);
-
-    const totalRotas = escalasHoje.reduce((s,e)=>s+e.total_rotas,0);
-    const totalAlocadas = escalasHoje.reduce((s,e)=>s+e.total_alocadas,0);
-    const totalSem = escalasHoje.reduce((s,e)=>s+e.total_sem_motorista,0);
-    const totalNS = noshowHoje.length;
-    const totalRodizio = rodizioHoje.length;
-
-    // Noshow recorrentes no mes
-    const mesAtual = new Date().toLocaleDateString('pt-BR',{month:'2-digit',year:'numeric'}).replace('/','.');
-    const noshowMes = await sbFetch('noshow','select=driver_name&hub_code=eq.'+encodeURIComponent(currentHub.hub_code));
-    const nsCounts = {};
-    noshowMes.forEach(r=>{ nsCounts[r.driver_name]=(nsCounts[r.driver_name]||0)+1; });
-    const recorrentes = Object.entries(nsCounts).filter(([,c])=>c>=3).sort((a,b)=>b[1]-a[1]);
-
-    c.innerHTML = `
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px">
-        <div class="kpi-card k-accent"><div class="k-label">Rotas hoje</div><div class="k-val">${totalRotas}</div><div class="k-sub">${escalasHoje.length} escala(s) gerada(s)</div></div>
-        <div class="kpi-card k-green"><div class="k-label">Alocadas OK</div><div class="k-val" style="color:var(--green)">${totalAlocadas}</div><div class="k-sub">${totalRotas?Math.round(totalAlocadas/totalRotas*100):0}% de aproveitamento</div></div>
-        <div class="kpi-card k-red"><div class="k-label">Sem motorista</div><div class="k-val" style="color:var(--red)">${totalSem}</div><div class="k-sub">Rotas descobertas</div></div>
-        <div class="kpi-card k-orange"><div class="k-label">No-shows hoje</div><div class="k-val" style="color:var(--orange)">${totalNS}</div><div class="k-sub">Registros de hoje</div></div>
-        <div class="kpi-card"><div class="k-label">Drivers escalados</div><div class="k-val">${totalRodizio}</div><div class="k-sub">No rodízio de hoje</div></div>
-      </div>
-
-      ${escalasHoje.length ? `
-      <div class="card" style="margin-bottom:16px">
-        <div class="card-header"><div class="card-step"><i class="ti ti-calendar-event" style="font-size:12px"></i></div><span class="card-title">Escalas de hoje</span></div>
-        <div style="padding:0"><table class="data-table">
-          <thead><tr><th>Turno</th><th>Rotas</th><th>Alocadas</th><th>Sem motorista</th><th>Hora</th></tr></thead>
-          <tbody>${escalasHoje.map(e=>`<tr>
-            <td>${turnoBadge(e.turno)}</td>
-            <td style="font-weight:600">${e.total_rotas}</td>
-            <td style="color:var(--green);font-weight:600">${e.total_alocadas}</td>
-            <td style="color:${e.total_sem_motorista>0?'var(--red)':'var(--green)'};font-weight:600">${e.total_sem_motorista}</td>
-            <td style="font-size:12px;color:var(--muted)">${new Date(e.created_at).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}</td>
-          </tr>`).join('')}</tbody>
-        </table></div>
-      </div>` : '<div class="card" style="padding:20px;text-align:center;color:var(--muted)">Nenhuma escala gerada hoje ainda</div>'}
-
-      ${recorrentes.length ? `
-      <div class="card">
-        <div class="card-header">
-          <div class="card-step" style="background:var(--red)"><i class="ti ti-alert-triangle" style="font-size:12px"></i></div>
-          <span class="card-title">⚠️ No-show recorrente (3+ vezes)</span>
-        </div>
-        <div style="padding:0"><table class="data-table">
-          <thead><tr><th>Driver</th><th>Ocorrências</th><th>Risco</th></tr></thead>
-          <tbody>${recorrentes.slice(0,10).map(([name,ct])=>`<tr>
-            <td style="font-weight:500;color:var(--red)">${name}</td>
-            <td><span style="font-weight:700;font-size:16px;color:${ct>=5?'var(--red)':'var(--orange)'}">${ct}x</span></td>
-            <td><span class="badge ${ct>=5?'bsp-err':'bsp-sub'}">${ct>=5?'Alto':'Médio'}</span></td>
-          </tr>`).join('')}</tbody>
-        </table></div>
-      </div>` : ''}
-    `;
-  }catch(e){
-    c.innerHTML='<div class="no-data">Erro ao carregar dashboard: '+e.message+'</div>';
-  }
-}
-
-// ── HISTÓRICO DE ESCALAS ─────────────────────────────────────────
-async function buscarHistorico(){
-  const ini = document.getElementById('hist-data-ini').value;
-  const fim = document.getElementById('hist-data-fim').value;
-  const turno = document.getElementById('hist-turno').value;
-  const c = document.getElementById('historico-content');
-  
-  if(!ini || !fim){ alert('Selecione data inicial e final.'); return; }
-  if(!currentHub){ alert('Faça login primeiro.'); return; }
-  
-  c.innerHTML='<div class="no-data">Buscando...</div>';
-  
-  try{
-    // Convert dates to pt-BR format for comparison
-    const iniDate = new Date(ini+' 00:00:00');
-    const fimDate = new Date(fim+' 23:59:59');
-    
-    let params = 'select=*&hub_code=eq.'+encodeURIComponent(currentHub.hub_code)+'&order=created_at.desc&limit=100';
-    if(turno) params += '&turno=eq.'+turno;
-    
-    const data = await sbFetch('escalas', params);
-    
-    // Filter by date range (dates stored as pt-BR strings)
-    const filtered = data.filter(e=>{
-      const parts = e.data_escala.split('/');
-      if(parts.length !== 3) return false;
-      const d = new Date(parts[2]+'-'+parts[1]+'-'+parts[0]);
-      return d >= iniDate && d <= fimDate;
-    });
-    
-    if(!filtered.length){
-      c.innerHTML='<div class="no-data">Nenhuma escala encontrada no período</div>';
-      return;
-    }
-
-    let html = '';
-    filtered.forEach(e=>{
-      const escala = e.escala_json ? JSON.parse(e.escala_json) : [];
-      const hora = new Date(e.created_at).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
-      html += `
-        <div class="card" style="margin-bottom:16px">
-          <div class="card-header">
-            <div class="card-step"><i class="ti ti-calendar" style="font-size:11px"></i></div>
-            <span class="card-title">${e.data_escala} — ${turnoBadge(e.turno)}</span>
-            <span style="margin-left:12px;font-size:12px;color:var(--muted)">${hora}</span>
-            <div style="margin-left:auto;display:flex;gap:16px;font-size:13px">
-              <span style="color:var(--green)">✓ ${e.total_alocadas} alocadas</span>
-              ${e.total_sem_motorista>0?`<span style="color:var(--red)">✗ ${e.total_sem_motorista} sem motorista</span>`:''}
-              <span style="color:var(--muted)">${e.total_rotas} rotas</span>
-            </div>
-          </div>
-          ${escala.length ? `
-          <div style="padding:0">
-            <div class="table-wrap"><table class="data-table">
-              <thead><tr><th>Turno</th><th>Rota</th><th>Gaiola</th><th>AT</th><th>Cluster</th><th>Modal pedido</th><th>Motorista</th><th>Modal alocado</th><th>Status</th></tr></thead>
-              <tbody>${escala.map(r=>`<tr class="${r.status==='sem_driver'?'err-row':''}">
-                <td>${turnoBadge(r.turno)}</td>
-                <td style="font-weight:500">${r.rota}</td>
-                <td style="font-size:12px;color:var(--muted)">${r.letra||'-'}</td>
-                <td style="font-size:11px;color:var(--muted)">${r.at||'-'}</td>
-                <td style="font-size:12px">${r.cluster}</td>
-                <td>${modalBadge(r.modalPedido)}</td>
-                <td style="font-weight:500">${r.driver}${diasSeguidos(nrm(r.driver||''))>=3?` <span style="font-size:10px;background:#FFEBEE;color:#B71C1C;padding:1px 6px;border-radius:99px;font-weight:700">🔄 Rod.forçado</span>`:''}</td>
-                <td>${r.allocModal?modalBadge(r.allocModal):'-'}</td>
-                <td>${r.status==='sem_driver'?'<span class="badge bsp-err">Sem motorista</span>':r.status==='plotado_secundario'?'<span class="badge bsp-plotado" style="background:#FFF3E0;color:#E65100">Plotado ⚠️</span>':r.status==='plotado'?'<span class="badge bsp-plotado">Plotado</span>':'<span class="badge bsp-ok">OK</span>'}</td>
-              </tr>`).join('')}
-
-              </tbody>
-            </table></div>
-          </div>` : '<div style="padding:14px;color:var(--muted);font-size:13px">Detalhes não disponíveis</div>'}
-        </div>`;
-    });
-    c.innerHTML = html;
-  }catch(e){
-    c.innerHTML='<div class="no-data">Erro: '+e.message+'</div>';
-  }
-}
-
-// ── RELATÓRIO MENSAL ─────────────────────────────────────────────
-let relatorioData = null;
-
-async function gerarRelatorio(){
-  const mes = document.getElementById('rel-mes').value;
-  if(!mes){ alert('Selecione o mês.'); return; }
-  if(!currentHub){ alert('Faça login primeiro.'); return; }
-
-  const c = document.getElementById('relatorio-content');
-  c.innerHTML='<div class="no-data">Gerando relatório...</div>';
-
-  try{
-    const [ano, mesNum] = mes.split('-');
-    const mesNome = new Date(ano+'-'+mesNum+'-01').toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
-
-    // Load escalas do mês
-    const escalasAll = await sbFetch('escalas','select=*&hub_code=eq.'+encodeURIComponent(currentHub.hub_code));
-    const escalasMes = escalasAll.filter(e=>{
-      const parts = (e.data_escala||'').split('/');
-      return parts.length===3 && parts[1]===mesNum && parts[2]===ano;
-    });
-
-    // Load noshow do mês
-    const noshowAll = await sbFetch('noshow','select=*&hub_code=eq.'+encodeURIComponent(currentHub.hub_code));
-    const noshowMes = noshowAll.filter(r=>{
-      const parts = (r.noshow_date||'').split('/');
-      return parts.length===3 && parts[1]===mesNum && parts[2]===ano;
-    });
-
-    // ── STATS GERAIS ──────────────────────────────────────────
-    const totalEscalas = escalasMes.length;
-    const totalRotas = escalasMes.reduce((s,e)=>s+e.total_rotas,0);
-    const totalAlocadas = escalasMes.reduce((s,e)=>s+e.total_alocadas,0);
-    const totalSem = escalasMes.reduce((s,e)=>s+e.total_sem_motorista,0);
-    const taxaGeral = totalRotas ? Math.round(totalAlocadas/totalRotas*100) : 0;
-    const totalNS = noshowMes.length;
-    const driversUnicos = new Set(noshowMes.map(r=>r.driver_name)).size;
-
-    // ── MODAIS ────────────────────────────────────────────────
-    const modaisCounts = {MOTO:0, PASSEIO:0, FIORINO:0, VAN:0, OUTROS:0};
-    let totalModais = 0;
-    escalasMes.forEach(e=>{
-      if(!e.escala_json) return;
-      try{
-        const rows = JSON.parse(e.escala_json);
-        rows.forEach(r=>{
-          const m = (r.allocModal||'').toUpperCase();
-          if(m==='MOTO') modaisCounts.MOTO++;
-          else if(m==='PASSEIO') modaisCounts.PASSEIO++;
-          else if(m==='FIORINO') modaisCounts.FIORINO++;
-          else if(m==='VAN') modaisCounts.VAN++;
-          else if(m) modaisCounts.OUTROS++;
-          if(m) totalModais++;
-        });
-      }catch(err){}
-    });
-
-    // ── POR DIA ───────────────────────────────────────────────
-    const porDia = {};
-    escalasMes.forEach(e=>{
-      const k = e.data_escala+'|'+e.turno;
-      if(!porDia[k]) porDia[k]={data:e.data_escala,turno:e.turno,rotas:0,alocadas:0,sem:0,ns:0};
-      porDia[k].rotas+=e.total_rotas;
-      porDia[k].alocadas+=e.total_alocadas;
-      porDia[k].sem+=e.total_sem_motorista;
-    });
-    noshowMes.forEach(r=>{
-      Object.values(porDia).forEach(d=>{
-        if(d.data===r.noshow_date && d.turno===r.turno) d.ns++;
-      });
-    });
-    const diasRows = Object.values(porDia).sort((a,b)=>{
-      const da=a.data.split('/').reverse().join('');
-      const db=b.data.split('/').reverse().join('');
-      return da.localeCompare(db);
-    });
-
-    // ── NO-SHOW RANKING ──────────────────────────────────────
-    const nsCounts = {};
-    noshowMes.forEach(r=>{
-      if(!nsCounts[r.driver_name]) nsCounts[r.driver_name]={count:0,rotas:[],datas:[]};
-      nsCounts[r.driver_name].count++;
-      nsCounts[r.driver_name].rotas.push(r.rota||r.gaiola||'-');
-      nsCounts[r.driver_name].datas.push(r.noshow_date);
-    });
-    const nsRanking = Object.entries(nsCounts).sort((a,b)=>b[1].count-a[1].count);
-
-    relatorioData = {mes:mesNome, mesNum, ano, noshowMes, escalasMes, nsRanking,
-      totalRotas, totalAlocadas, totalSem, totalNS, modaisCounts, totalModais};
-
-    // ── RENDER ────────────────────────────────────────────────
-    function pct(n){ return totalModais ? Math.round(n/totalModais*100)+'%' : '0%'; }
-
-    c.innerHTML = `
-      <div style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between">
-        <h3 style="font-size:15px;font-weight:700">${mesNome} — ${currentHub.hub_name}</h3>
-      </div>
-
-      <!-- KPIs GERAIS -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:20px">
-        <div class="kpi-card"><div class="k-label">Escalas geradas</div><div class="k-val">${totalEscalas}</div></div>
-        <div class="kpi-card k-accent"><div class="k-label">Total de rotas</div><div class="k-val">${totalRotas}</div></div>
-        <div class="kpi-card k-green"><div class="k-label">Alocadas</div><div class="k-val" style="color:var(--green)">${totalAlocadas}</div><div class="k-sub">${taxaGeral}% aproveitamento</div></div>
-        <div class="kpi-card k-red"><div class="k-label">Sem motorista</div><div class="k-val" style="color:var(--red)">${totalSem}</div></div>
-        <div class="kpi-card k-orange"><div class="k-label">No-shows</div><div class="k-val" style="color:var(--orange)">${totalNS}</div><div class="k-sub">${driversUnicos} drivers únicos</div></div>
-      </div>
-
-      <!-- MODAIS -->
-      <div class="card" style="margin-bottom:16px">
-        <div class="card-header">
-          <div class="card-step"><i class="ti ti-car" style="font-size:11px"></i></div>
-          <span class="card-title">Modais alocados no mês</span>
-          <span class="card-subtitle">${totalModais} alocações totais</span>
-        </div>
-        <div style="padding:16px 18px">
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px">
-            <div class="kpi-card" style="border-top:3px solid #424242">
-              <div class="k-label">Moto</div>
-              <div class="k-val" style="font-size:24px">${modaisCounts.MOTO}</div>
-              <div class="k-sub">${pct(modaisCounts.MOTO)} do total</div>
-              <div style="height:6px;background:#f5f5f5;border-radius:3px;margin-top:8px">
-                <div style="height:6px;background:#424242;border-radius:3px;width:${pct(modaisCounts.MOTO)}"></div>
-              </div>
-            </div>
-            <div class="kpi-card" style="border-top:3px solid #004D40">
-              <div class="k-label">Passeio</div>
-              <div class="k-val" style="font-size:24px">${modaisCounts.PASSEIO}</div>
-              <div class="k-sub">${pct(modaisCounts.PASSEIO)} do total</div>
-              <div style="height:6px;background:#f5f5f5;border-radius:3px;margin-top:8px">
-                <div style="height:6px;background:#004D40;border-radius:3px;width:${pct(modaisCounts.PASSEIO)}"></div>
-              </div>
-            </div>
-            <div class="kpi-card" style="border-top:3px solid #4527A0">
-              <div class="k-label">Fiorino</div>
-              <div class="k-val" style="font-size:24px">${modaisCounts.FIORINO}</div>
-              <div class="k-sub">${pct(modaisCounts.FIORINO)} do total</div>
-              <div style="height:6px;background:#f5f5f5;border-radius:3px;margin-top:8px">
-                <div style="height:6px;background:#4527A0;border-radius:3px;width:${pct(modaisCounts.FIORINO)}"></div>
-              </div>
-            </div>
-            <div class="kpi-card" style="border-top:3px solid #880E4F">
-              <div class="k-label">Van</div>
-              <div class="k-val" style="font-size:24px">${modaisCounts.VAN}</div>
-              <div class="k-sub">${pct(modaisCounts.VAN)} do total</div>
-              <div style="height:6px;background:#f5f5f5;border-radius:3px;margin-top:8px">
-                <div style="height:6px;background:#880E4F;border-radius:3px;width:${pct(modaisCounts.VAN)}"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- POR DIA -->
-      <div class="card" style="margin-bottom:16px">
-        <div class="card-header">
-          <div class="card-step"><i class="ti ti-calendar" style="font-size:11px"></i></div>
-          <span class="card-title">Operação por dia</span>
-          <span class="card-subtitle">${diasRows.length} escalas no mês</span>
-        </div>
-        <div style="padding:0">
-          <div class="table-wrap"><table class="data-table">
-            <thead><tr><th>Data</th><th>Turno</th><th>Rotas</th><th>Alocadas</th><th>Sem motorista</th><th>Taxa</th><th>No-shows</th></tr></thead>
-            <tbody>${diasRows.map(d=>`<tr>
-              <td style="font-weight:500">${d.data}</td>
-              <td>${turnoBadge(d.turno)}</td>
-              <td>${d.rotas}</td>
-              <td style="color:var(--green);font-weight:600">${d.alocadas}</td>
-              <td style="color:${d.sem>0?'var(--red)':'var(--green)'};font-weight:600">${d.sem}</td>
-              <td><span style="font-weight:600;color:${d.rotas&&Math.round(d.alocadas/d.rotas*100)>=95?'var(--green)':'var(--orange)'}">${d.rotas?Math.round(d.alocadas/d.rotas*100):0}%</span></td>
-              <td style="color:${d.ns>0?'var(--orange)':'var(--muted)'}">${d.ns||'-'}</td>
-            </tr>`).join('')}</tbody>
-          </table></div>
-        </div>
-      </div>
-
-      <!-- NS RANKING -->
-      ${nsRanking.length ? `
-      <div class="card">
-        <div class="card-header">
-          <div class="card-step" style="background:var(--red)"><i class="ti ti-ban" style="font-size:11px"></i></div>
-          <span class="card-title">Ranking de No-Show</span>
-          <span class="card-subtitle">${nsRanking.length} drivers</span>
-        </div>
-        <div style="padding:0"><table class="data-table">
-          <thead><tr><th>#</th><th>Driver</th><th>Ocorrências</th><th>Rotas</th><th>Datas</th><th>Risco</th></tr></thead>
-          <tbody>${nsRanking.map(([name,d],i)=>`<tr>
-            <td style="color:var(--muted);font-size:12px">${i+1}</td>
-            <td style="font-weight:500">${name}</td>
-            <td><span style="font-weight:700;font-size:15px;color:${d.count>=5?'var(--red)':'var(--orange)'}">${d.count}x</span></td>
-            <td style="font-size:12px;color:var(--muted)">${d.rotas.slice(0,3).join(', ')}${d.rotas.length>3?' ...':''}</td>
-            <td style="font-size:12px;color:var(--muted)">${[...new Set(d.datas)].slice(0,3).join(', ')}</td>
-            <td><span class="badge ${d.count>=5?'bsp-err':d.count>=3?'bsp-sub':'bsp-am'}">${d.count>=5?'Alto':d.count>=3?'Médio':'Baixo'}</span></td>
-          </tr>`).join('')}</tbody>
-        </table></div>
-      </div>` : `<div class="card" style="padding:20px;text-align:center;color:var(--green)">✅ Nenhum no-show em ${mesNome}</div>`}
-    `;
-  }catch(e){
-    c.innerHTML='<div class="no-data">Erro: '+e.message+'</div>';
-  }
-}
-
-// ── FUNÇÕES FALTANTES (bug fix) ───────────────────────────────────
-function afterRenderResults(){
-  // Salva escala no histórico do Supabase após renderizar
-  const turnoSel = document.querySelector('input[name="turno"]:checked')?.value || 'AM';
-  if(typeof salvarEscalaHistorico === 'function') salvarEscalaHistorico(turnoSel);
-  // Persiste allRows no localStorage para sobreviver reload
-  try{ localStorage.setItem('shopee_lastAllRows', JSON.stringify(allRows)); }catch(e){}
-  try{ localStorage.setItem('shopee_lastTurno', turnoSel); }catch(e){}
-}
-
-// ── TIMEOUT DE SESSÃO ────────────────────────────────────────────
-let _sessionTimer = null;
-const SESSION_TIMEOUT_MS = 8 * 60 * 60 * 1000; // 8 horas
-const SESSION_WARN_MS    = 7 * 60 * 60 * 1000; // aviso 1h antes
-
-function resetSessionTimer(){
-  clearTimeout(_sessionTimer);
-  // Aviso 1h antes de expirar
-  _sessionTimer = setTimeout(()=>{
-    const continua = confirm(
-      '⚠️ Sua sessão expira em 1 hora.\n\n' +
-      'Exporte a escala agora para não perder os dados.\n\n' +
-      'Clique OK para continuar logado ou Cancelar para sair.'
-    );
-    if(!continua){ doLogout(); return; }
-    // Renovar sessão por mais 8h
-    resetSessionTimer();
-  }, SESSION_WARN_MS);
-}
-
-function doLogout(){
-  sessionStorage.removeItem('hub');
-  currentHub = null;
-  document.querySelector('.sidebar').style.display = 'none';
-  document.querySelector('.main-wrap').style.display = 'none';
-  document.getElementById('login-screen').style.display = 'flex';
-}
-
-function updateDataBadges(){
-  const bdDisp=document.getElementById('badge-disp');
-  const bdRot=document.getElementById('badge-rot');
-  if(bdDisp){
-    if(dispData.length){ bdDisp.textContent=`👥 ${dispData.length}`; bdDisp.style.background='#E6F9EE'; bdDisp.style.color='#0A7A33'; }
-    else { bdDisp.textContent='👥 –'; bdDisp.style.background='#FFEBEE'; bdDisp.style.color='#B71C1C'; }
-  }
-  if(bdRot){
-    if(escData.length){ bdRot.textContent=`🗺️ ${escData.length}`; bdRot.style.background='#E6F9EE'; bdRot.style.color='#0A7A33'; }
-    else { bdRot.textContent='🗺️ –'; bdRot.style.background='#FFEBEE'; bdRot.style.color='#B71C1C'; }
-  }
-}
-
-function restoreFromStorage(){
-  // Restaura dispData, escData e allRows do localStorage após reload
-  try{
-    const d = localStorage.getItem('shopee_dispData');
-    if(d){ dispData = JSON.parse(d); }
-  }catch(e){}
-  try{
-    const e = localStorage.getItem('shopee_escData');
-    if(e){ escData = JSON.parse(e); }
-  }catch(e){}
-  try{
-    const a = localStorage.getItem('shopee_lastAllRows');
-    if(a){
-      allRows = JSON.parse(a);
-      // Re-renderiza resultados se havia escala gerada
-      if(allRows.length > 0){
-        updateDataBadges();
-        // Restaurar turno selecionado
-        const savedTurno = localStorage.getItem('shopee_lastTurno') || 'AM';
-        const radioAM  = document.querySelector('input[name="turno"][value="AM"]');
-        const radioSD  = document.querySelector('input[name="turno"][value="SD"]');
-        const radioAmb = document.querySelector('input[name="turno"][value="AMBOS"]');
-        if(savedTurno==='SD'    && radioSD)  radioSD.checked  = true;
-        else if(savedTurno==='AMBOS' && radioAmb) radioAmb.checked = true;
-        else if(radioAM) radioAM.checked = true;
-        livresData = []; alertas = [];
-        renderResults();
-        // Navegar para a página de escala para mostrar resultado
-        showPage('escala');
-      }
-    }
-  }catch(e){}
-}
-
-function initDefaultDates(){
-  // Inicializa datas padrão nos campos de histórico e relatório
-  const hoje = new Date();
-  const anoMes = hoje.toISOString().slice(0,7);
-  const dataHoje = hoje.toISOString().slice(0,10);
-  const primeiroDia = dataHoje.slice(0,8)+'01';
-  const relMes = document.getElementById('rel-mes');
-  if(relMes && !relMes.value) relMes.value = anoMes;
-  const histIni = document.getElementById('hist-data-ini');
-  if(histIni && !histIni.value) histIni.value = primeiroDia;
-  const histFim = document.getElementById('hist-data-fim');
-  if(histFim && !histFim.value) histFim.value = dataHoje;
-}
-
-async function exportarRelatorio(){
-  if(!relatorioData){ alert('Gere o relatório primeiro.'); return; }
-  const wb = XLSX.utils.book_new();
-  const {noshowMes, escalasMes, nsRanking, totalRotas, totalAlocadas, totalSem, totalNS, modaisCounts} = relatorioData;
-
-  // Aba resumo
-  const resumo = [
-    {Métrica:'Total de escalas', Valor:escalasMes.length},
-    {Métrica:'Total de rotas', Valor:totalRotas},
-    {Métrica:'Rotas alocadas', Valor:totalAlocadas},
-    {Métrica:'Rotas sem motorista', Valor:totalSem},
-    {Métrica:'Taxa de aproveitamento', Valor:totalRotas?Math.round(totalAlocadas/totalRotas*100)+'%':'0%'},
-    {Métrica:'No-shows', Valor:totalNS},
-    {Métrica:'Moto', Valor:modaisCounts.MOTO},
-    {Métrica:'Passeio', Valor:modaisCounts.PASSEIO},
-    {Métrica:'Fiorino', Valor:modaisCounts.FIORINO},
-    {Métrica:'Van', Valor:modaisCounts.VAN},
-  ];
-  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(resumo), 'Resumo');
-
-  // Aba no-show
-  if(noshowMes.length){
-    const nsData = noshowMes.map(r=>({
-      Driver:r.driver_name, Rota:r.rota||'', Gaiola:r.gaiola||'',
-      Turno:r.turno, Data:r.noshow_date
-    }));
-    XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(nsData), 'No-Show');
-  }
-
-  // Aba ranking
-  if(nsRanking.length){
-    const rank = nsRanking.map(([name,d],i)=>({
-      '#':i+1, Driver:name, Ocorrências:d.count,
-      Risco:d.count>=5?'Alto':d.count>=3?'Médio':'Baixo'
-    }));
-    XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(rank), 'Ranking NS');
-  }
-
-  XLSX.writeFile(wb, 'Relatorio_'+relatorioData.mes.replace(/ /g,'_')+'.xlsx');
-}
 </script>
+
 </body>
 </html>
