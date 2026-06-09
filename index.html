@@ -301,6 +301,8 @@ textarea{resize:vertical;min-height:90px;}
     </div>
     <div class="topbar-right">
       <span id="topbar-status" class="status-badge" style="display:none"></span>
+      <span id="badge-disp" title="Disponibilidade" style="font-size:10px;padding:3px 8px;border-radius:99px;font-weight:700;background:#FFEBEE;color:#B71C1C">👥 –</span>
+      <span id="badge-rot"  title="Roteirização"   style="font-size:10px;padding:3px 8px;border-radius:99px;font-weight:700;background:#FFEBEE;color:#B71C1C">🗺️ –</span>
       <span style="font-size:12px;color:var(--muted);background:var(--sp-light);color:var(--sp-dark);padding:3px 10px;border-radius:99px;font-weight:500" id="topbar-hub"></span>
       <span style="font-size:12px;color:var(--muted)" id="topbar-date"></span>
     </div>
@@ -518,6 +520,24 @@ function showPage(name){
   if(name==='rodizio') renderRodizio();
 }
 
+// ── TIMEOUT DE SESSÃO ───────────────────────────────────────
+let _sessionTimer = null;
+function resetSessionTimer(){
+  clearTimeout(_sessionTimer);
+  _sessionTimer = setTimeout(()=>{
+    const ok = confirm('\u26A0\uFE0F Sua sessão expira em 1 hora.\n\nExporte a escala agora para não perder os dados.\n\nOK = continuar  |  Cancelar = sair');
+    if(!ok){ doLogout(); return; }
+    resetSessionTimer();
+  }, 7 * 60 * 60 * 1000);
+}
+function doLogout(){
+  clearTimeout(_sessionTimer);
+  sessionStorage.removeItem('hub'); currentHub=null;
+  document.querySelector('.sidebar').style.display='none';
+  document.querySelector('.main-wrap').style.display='none';
+  document.getElementById('login-screen').style.display='flex';
+}
+
 // Set topbar date
 const _td=document.getElementById('topbar-date'); if(_td) _td.textContent = new Date().toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'2-digit',year:'numeric'});
 
@@ -609,6 +629,19 @@ function exportarRodizio(){
 // Retorna quantas DIAS DIFERENTES o driver rodou na janela configurada
 function getRodizioJanela(){
   return parseInt(document.getElementById('rodizio-days')?.value||'3')||3;
+}
+function diasSeguidos(nameNorm){
+  const list = getRodizio().filter(r=>nrm(r.name)===nameNorm);
+  if(!list.length) return 0;
+  const hoje = new Date();
+  let dias = 0;
+  for(let i=0; i<7; i++){
+    const d = new Date(hoje); d.setDate(d.getDate()-i);
+    const ds = d.toLocaleDateString('pt-BR');
+    if(list.some(r=>r.date===ds)) dias++;
+    else break;
+  }
+  return dias;
 }
 function vezesRodou(nameNorm){
   const list = getRodizio();
@@ -778,6 +811,8 @@ async function loadDisp(inp){
     const buf=await f.arrayBuffer();
     const wb=XLSX.read(buf,{type:'array'});
     dispData=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:''});
+    const _bd=document.getElementById('badge-disp');
+    if(_bd){_bd.textContent=`👥 ${dispData.length}`;_bd.style.background='#E6F9EE';_bd.style.color='#0A7A33';}
     const keys=Object.keys(dispData[0]||{});
     const colDia=keys[5]||'?';
     let am=0,sd=0,both=0,dupes=0;
@@ -824,6 +859,8 @@ async function loadEscala(inp){
       g:parseInt(r['G']||0)||0,
       gg:parseInt(r['GG']||0)||0
     }));
+    const _br=document.getElementById('badge-rot');
+    if(_br){_br.textContent=`🗺️ ${escData.length}`;_br.style.background='#E6F9EE';_br.style.color='#0A7A33';}
     const ciclos=[...new Set(escData.map(r=>r.turno).filter(Boolean))];
     btn.textContent=`✓ ${f.name} | ${escData.length} rotas | ciclos: ${ciclos.join(', ')}`;
     btn.className='file-upload loaded';
@@ -875,7 +912,8 @@ function runEscala(){
       noShow:Number(d['No Show Time']||0),
       noshow:Number(d['No Show Time']||0),
       id:String(d['Driver ID']||''),
-      isSDOnly: turno==='SD'
+      isSDOnly: turno==='SD',
+      isAMOnly: turno==='AM'
     };
   }).filter(d=>d&&!penalizados.includes(d.nameNorm));
 
@@ -1025,9 +1063,15 @@ function runEscala(){
         const bVezes=vezesRodou(b.nameNorm);
         if(aVezes!==bVezes) return aVezes-bVezes;
         if(isSdRota){
+          // Rotas SD: prioriza SÓ SD (preserva AMBOS para AM)
           const aSD=a.isSDOnly?0:1;
           const bSD=b.isSDOnly?0:1;
           if(aSD!==bSD) return aSD-bSD;
+        } else {
+          // Rotas AM: prioriza SÓ AM (preserva AMBOS para SD)
+          const aAM=a.isAMOnly?0:1;
+          const bAM=b.isAMOnly?0:1;
+          if(aAM!==bAM) return aAM-bAM;
         }
         // 1ª prioridade: primeiro cluster do driver bate com a rota
         const aFirst = firstClusterMatch(a, rCluster) ? 0 : 1;
@@ -1061,7 +1105,12 @@ function runEscala(){
         driverFitCluster(d.cluster, rCluster)
       ) : null);
     // Plotado aloca com o modal pedido pela rota (não o modal do driver)
-    if(pMatch){ chosen=pMatch; status='plotado'; allocModal=modalOrder[0]==='MOTO'?'MOTO':pMatch.modal; }
+    if(pMatch){
+      chosen=pMatch;
+      const ehPrincipal = firstClusterMatch(pMatch, rCluster);
+      status = ehPrincipal ? 'plotado' : 'plotado_sec';
+      allocModal=modalOrder[0]==='MOTO'?'MOTO':pMatch.modal;
+    }
     } // end if(!chosen) for van check
     if(!chosen){
       let found=false;
@@ -1204,7 +1253,7 @@ function renderEsc(rows){
   const b=document.getElementById('tbody-escala');
   if(!rows.length){b.innerHTML=`<tr><td colspan="9" class="no-result">Nenhuma rota encontrada</td></tr>`;return;}
   b.innerHTML=rows.map(r=>{
-    const sb=r.status==='plotado'?`<span class="badge bsp-plotado">Plotado</span>`:
+    const sb=r.status==='plotado_sec'?`<span class="badge bsp-plotado" title="Plotado fora do cluster principal" style="background:#FFF3E0;color:#E65100;border:1px solid #FF9500">Plotado ⚠️</span>`:r.status==='plotado'?`<span class="badge bsp-plotado">Plotado</span>`:
       r.status==='ok'?`<span class="badge bsp-ok">OK</span>`:
       r.status==='volume'?`<span class="badge bsp-vol">Volume</span>`:
       r.status==='substituido'?`<span class="badge bsp-sub">VAN→Fiorino</span>`:
@@ -1223,7 +1272,7 @@ function renderEsc(rows){
       <td>${volStr}</td>
       <td style="font-size:12px">${r.gg>0?`<span class="badge bsp-err">GG:${r.gg}</span>`:r.g>0?`<span class="badge bsp-sub">G:${r.g}</span>`:'-'}</td>
       <td>${modalBadge(r.modalPedido)}</td>
-      <td style="font-weight:500">${r.driver}</td>
+      <td style="font-weight:500">${r.driver}${diasSeguidos(nrm(r.driver||''))>=3?` <span style="font-size:10px;background:#FFEBEE;color:#B71C1C;padding:1px 6px;border-radius:99px;font-weight:700" title="Rodou ${diasSeguidos(nrm(r.driver||''))} dias seguidos">🔄</span>`:''}</td>
       <td style="font-size:12px;color:var(--sp-text-muted)">${r.driverId||'-'}</td>
       <td>${r.allocModal?modalBadge(r.allocModal):'-'}</td>
       <td>${sb}</td>
@@ -1542,6 +1591,12 @@ function renderNSTable(drivers, maxNS){
   </table>`;
 }
 
+function nsTendencia(n){
+  if(n===0) return '<span style="color:#4caf50;font-size:12px" title="Sem ocorrências">✓</span>';
+  if(n>=5)  return '<span style="color:#f44336;font-size:12px;font-weight:700" title="Alto risco">↑↑</span>';
+  if(n>=3)  return '<span style="color:#ff9800;font-size:12px;font-weight:700" title="Atenção">↑</span>';
+  return '<span style="color:#ffc107;font-size:12px" title="Baixo risco">→</span>';
+}
 function filterNS(){
   const q = nrm(document.getElementById('ns-search').value);
   const maxNS = nsAllDrivers[0]?.noshow||1;
@@ -1647,7 +1702,7 @@ function renderDisponibilidade(){
             <tbody>${mDrivers.sort((a,b)=>a.noshow-b.noshow).map(d=>`<tr>
               <td style="font-weight:600">${d.name}</td>
               <td>${turnoBadge(d.turno==='AMBOS'?'AMBOS':d.turno)}</td>
-              <td><span style="font-weight:700;color:${d.noshow>=5?'#f44336':d.noshow>=3?'#ff9800':d.noshow>=1?'#ffc107':'#4caf50'}">${d.noshow}</span></td>
+              <td><span style="font-weight:700;color:${d.noshow>=5?'#f44336':d.noshow>=3?'#ff9800':d.noshow>=1?'#ffc107':'#4caf50'}">${d.noshow}</span> ${nsTendencia(d.noshow)}</td>
               <td style="font-size:11px;color:#888;max-width:200px">${d.cluster||'-'}</td>
             </tr>`).join('')}</tbody>
           </table></div>
@@ -1678,7 +1733,7 @@ function exportarTudo(){
       'Modal pedido': String(r.modalPedido||''),
       'Motorista sugerido': String(r.driver||''),
       'Modal alocado': String(r.allocModal||''),
-      'Status': r.status==='plotado'?'Plotado':
+      'Status': r.status==='plotado_sec'?'Plotado (cluster sec.)':r.status==='plotado'?'Plotado':
                 r.status==='ok'?'OK':
                 r.status==='volume'?'Volume':
                 r.status==='substituido'?'VAN-Fiorino':
@@ -2065,6 +2120,7 @@ async function doLogin(){
     sessionStorage.setItem('hub', JSON.stringify(currentHub));
     showApp();
     await loadHubData();
+    resetSessionTimer();
   }catch(e){
     erro.style.display='block'; erro.textContent='Erro: ' + e.message;
   }
@@ -2122,14 +2178,6 @@ async function savePenalizadosToHub(){
   await sbDelete('penalizados', 'hub_code=eq.' + encodeURIComponent(currentHub.hub_code));
   if(names.length) await sbPost('penalizados', names.map(n=>({hub_code:currentHub.hub_code,driver_name:n})));
   alert('Penalizados salvos no hub!');
-}
-
-function doLogout(){
-  if(confirm('Deseja sair?')){
-    sessionStorage.removeItem('hub');
-    currentHub = null;
-    location.reload();
-  }
 }
 
 // Auto-login se sessão existir (após página carregar)
