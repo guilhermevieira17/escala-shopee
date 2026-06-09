@@ -976,18 +976,33 @@ function runEscala(){
     .sort((a,b)=> a.cluster.split(',').length - b.cluster.split(',').length);
 
   const plotadosUsados = new Set();
+  const rotasUsadasPlotado = new Set();
   const plotadoReserva = {};
 
-  rotasFiltradas.forEach(rota=>{
-    const rCluster = rota.cluster;
-    const modalOrder = getModalOrder(rota.volume, rota.modal||'', rota.g||0, rota.gg||0);
-    if(modalOrder[0]==='MOTO') return; // plotados nunca em moto
-    const p = plotadosDisponiveis.find(d=>{
-      if(plotadosUsados.has(d.nameNorm)) return false;
-      if(!driverFitCluster(d.cluster, rCluster)) return false;
-      return true; // plotado vai em qualquer rota não-moto do seu cluster
-    });
-    if(p){ plotadosUsados.add(p.nameNorm); plotadoReserva[rota.rota]=p; }
+  // MATCHING BIPARTIDO: itera pelos PLOTADOS (não pelas rotas)
+  // Garante que cada plotado receba UMA rota — plotados com menos clusters têm prioridade
+  plotadosDisponiveis.forEach(plotado => {
+    if(plotado.modal === 'MOTO') return;
+    const candidatas = rotasFiltradas
+      .filter(rota => {
+        if(rotasUsadasPlotado.has(rota.rota)) return false;
+        const mo = getModalOrder(rota.volume, rota.modal||'', rota.g||0, rota.gg||0);
+        if(mo[0]==='MOTO') return false;
+        if(plotado.modal==='VAN' && !mo.includes('VAN')) return false;
+        if(!driverFitCluster(plotado.cluster, rota.cluster)) return false;
+        return true;
+      })
+      .sort((a,b)=>{
+        const sA = parseVol(a.volume) + (parseInt(a.gg)||0)*200 + (parseInt(a.g)||0)*50;
+        const sB = parseVol(b.volume) + (parseInt(b.gg)||0)*200 + (parseInt(b.g)||0)*50;
+        return sB - sA;
+      });
+    if(candidatas.length > 0){
+      const rota = candidatas[0];
+      plotadosUsados.add(plotado.nameNorm);
+      rotasUsadasPlotado.add(rota.rota);
+      plotadoReserva[rota.rota] = plotado;
+    }
   });
 
   rotasFiltradas.forEach(rota=>{
