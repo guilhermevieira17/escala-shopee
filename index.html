@@ -1014,7 +1014,8 @@ function runEscala(){
     .sort((a,b)=> a.cluster.split(',').length - b.cluster.split(',').length);
 
   const plotadosUsados = new Set();
-  const rotasUsadasPlotado = new Set();
+  // Inicializar com rotas já reservadas pela VAN para plotados não disputarem
+  const rotasUsadasPlotado = new Set(Object.keys(vanReserva));
   const plotadoReserva = {};
 
   // MATCHING BIPARTIDO: itera pelos PLOTADOS (não pelas rotas)
