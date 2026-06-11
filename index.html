@@ -1184,8 +1184,10 @@ function runEscala(){
   });
   const expBtn=document.getElementById('export-btn'); if(expBtn) expBtn.disabled=false;
 
-  // Save escalados to rodizio (local + Supabase)
-  const escalados=allRows.filter(r=>r.driverObj).map(r=>r.driverObj);
+  // Save escalados to rodizio — plotados NÃO entram no rodízio
+  const escalados=allRows
+    .filter(r=>r.driverObj && r.status!=='plotado' && r.status!=='plotado_sec')
+    .map(r=>r.driverObj);
   addToRodizio(escalados, turnoSel);
   if(typeof syncRodizioToHub==='function') syncRodizioToHub(escalados, turnoSel);
 
