@@ -1011,7 +1011,7 @@ function runEscala(){
   const todosDisponiveis = _deduped2.filter(d=>!penalizados.includes(d.nameNorm));
   const plotadosDisponiveis = todosDisponiveis
     .filter(d=>isPloated(d))
-    .sort((a,b)=> a.cluster.split(',').length - b.cluster.split(',').length);
+    .sort((a,b)=> a.cluster.split(',').filter(x=>x.trim()).length - b.cluster.split(',').filter(x=>x.trim()).length);
 
   const plotadosUsados = new Set();
   // Inicializar com rotas já reservadas pela VAN para plotados não disputarem
@@ -1184,10 +1184,11 @@ function runEscala(){
   });
   const expBtn=document.getElementById('export-btn'); if(expBtn) expBtn.disabled=false;
 
-  // Save escalados to rodizio — plotados NÃO entram no rodízio
+  // Save escalados to rodizio — plotados NUNCA entram no rodízio (escalados ou não)
   const escalados=allRows
     .filter(r=>r.driverObj && r.status!=='plotado' && r.status!=='plotado_sec')
-    .map(r=>r.driverObj);
+    .map(r=>r.driverObj)
+    .filter(d=>!isPloatedByName(d.nameNorm));
   addToRodizio(escalados, turnoSel);
   if(typeof syncRodizioToHub==='function') syncRodizioToHub(escalados, turnoSel);
 
@@ -1203,7 +1204,7 @@ function renderResults(){
   const resEl=document.getElementById('results'); if(resEl) resEl.style.display='block';
   const total=allRows.length;
   const filled=allRows.filter(r=>r.status!=='sem_driver').length;
-  const plotCt=allRows.filter(r=>r.status==='plotado').length;
+  const plotCt=allRows.filter(r=>r.status==='plotado'||r.status==='plotado_sec').length;
   const subCt=allRows.filter(r=>r.status==='substituido').length;
   const volCt=allRows.filter(r=>r.volFlag||r.g>0||r.gg>0).length;
   const forcCt=allRows.filter(r=>r.status==='ok_forcado'||r.status==='sub_forcado').length;
@@ -1321,7 +1322,7 @@ function renderRelatorio(){
 
   const total=allRows.length;
   const ok=allRows.filter(r=>r.status==='ok').length;
-  const plotadosCt=allRows.filter(r=>r.status==='plotado').length;
+  const plotadosCt=allRows.filter(r=>r.status==='plotado'||r.status==='plotado_sec').length;
   const sub=allRows.filter(r=>r.status==='substituido'||r.status==='sub_forcado').length;
   const forcado=allRows.filter(r=>r.status==='ok_forcado'||r.status==='sub_forcado').length;
   const sem=allRows.filter(r=>r.status==='sem_driver').length;
@@ -1337,7 +1338,7 @@ function renderRelatorio(){
     if(!byCluster[k]) byCluster[k]={total:0,ok:0,plotado:0,sub:0,forcado:0,sem:0,modais:{}};
     byCluster[k].total++;
     if(r.status==='ok') byCluster[k].ok++;
-    else if(r.status==='plotado') byCluster[k].plotado++;
+    else if(r.status==='plotado'||r.status==='plotado_sec') byCluster[k].plotado++;
     else if(r.status==='substituido'||r.status==='sub_forcado') byCluster[k].sub++;
     else if(r.status==='ok_forcado') byCluster[k].forcado++;
     else if(r.status==='sem_driver') byCluster[k].sem++;
