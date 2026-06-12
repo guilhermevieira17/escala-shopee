@@ -891,6 +891,7 @@ function runEscala(){
   const penalizados=getPenalizados();
   allRows=[]; livresData=[]; alertas=[];
   const used=new Set();
+  const used_rotas=new Set(); // rastreia rotas já alocadas para cálculo de cluster esgotado
 
   const keys=Object.keys(dispData[0]||{});
   const todayCol=keys[5]||null;
@@ -1016,6 +1017,8 @@ function runEscala(){
   const plotadosUsados = new Set();
   // Inicializar com rotas já reservadas pela VAN para plotados não disputarem
   const rotasUsadasPlotado = new Set(Object.keys(vanReserva));
+  // Sincronizar used_rotas com van e plotados pré-alocados
+  // (será preenchido durante o loop principal)
   const plotadoReserva = {};
 
   // MATCHING BIPARTIDO: itera pelos PLOTADOS (não pelas rotas)
@@ -1079,8 +1082,8 @@ function runEscala(){
         const bFirst = firstClusterMatch(b, rCluster) ? 0 : 1;
         if(aFirst!==bFirst) return aFirst-bFirst;
         // 2ª prioridade: driver mais específico (menos clusters)
-        const aClusters = (a.cluster||'').split(',').length;
-        const bClusters = (b.cluster||'').split(',').length;
+        const aClusters = (a.cluster||'').split(',').filter(x=>x.trim()).length;
+        const bClusters = (b.cluster||'').split(',').filter(x=>x.trim()).length;
         if(aClusters!==bClusters) return aClusters-bClusters;
         return a.noShow-b.noShow;
       });
@@ -1116,11 +1119,27 @@ function runEscala(){
     if(!chosen){
       let found=false;
       for(const tryModal of modalOrder){
-        const cands=sortCands(available.filter(d=>
+        // Passagem 1: prioriza drivers cujo PRIMEIRO cluster é exatamente rCluster
+        // Evita "roubar" drivers de clusters que ainda têm rotas disponíveis
+        const allFit = available.filter(d=>
           !used.has(d.nameNorm)&&!isPloated(d)&&
           d.modal===tryModal&&
           driverFitCluster(d.cluster,rCluster)
-        ));
+        );
+        // Separar: firstCluster bate vs não bate
+        const firstMatch = allFit.filter(d=>firstClusterMatch(d, rCluster));
+        const noFirstMatch = allFit.filter(d=>!firstClusterMatch(d, rCluster));
+        // Para drivers sem firstMatch: só usar se NÃO há mais rotas disponíveis
+        // no PRIMEIRO cluster deles (verificação rápida)
+        const safeNoFirst = noFirstMatch.filter(d=>{
+          const fc = (d.cluster||'').split(',')[0].trim();
+          // Verificar se ainda há rota não usada no primeiro cluster deste driver
+          const rotasNoPrimeiro = rotasFiltradas.filter(r=>
+            !used_rotas.has(r.rota) && driverFitCluster(fc, r.cluster)
+          );
+          return rotasNoPrimeiro.length === 0; // só usa se cluster principal esgotado
+        });
+        const cands=sortCands([...firstMatch, ...safeNoFirst]);
         if(cands.length){
           chosen=cands[0]; allocModal=tryModal; found=true;
           if(tryModal===modalOrder[0]){
@@ -1164,7 +1183,7 @@ function runEscala(){
       }
     }
 
-    if(chosen) used.add(chosen.nameNorm);
+    if(chosen){ used.add(chosen.nameNorm); used_rotas.add(rota.rota); }
     allRows.push({turno:rota.turno,rota:rota.rota,letra:rota.letra,cluster:rCluster,
       volume:rota.volume,g:rota.g||0,gg:rota.gg||0,modalPedido,
       driver:chosen?chosen.name:'— sem motorista —',
