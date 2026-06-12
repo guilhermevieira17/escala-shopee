@@ -699,8 +699,27 @@ function driverFitCluster(dc,rc){
 }
 
 function parseVol(v){
-  // Remove ponto separador de milhar brasileiro: 1.168 → 1168
-  return parseFloat((v||'0').toString().replace(/\./g,'').replace(',','.'))||0;
+  const s = (v||'0').toString().trim();
+  if(!s || s==='0') return 0;
+  // Vírgula: separador de milhar se 3 dígitos depois (1,515 → 1515), senão decimal (1,5 → 1.5)
+  if(s.includes(',')){
+    const ci = s.lastIndexOf(',');
+    const afterComma = s.slice(ci+1);
+    if(afterComma.length===3 && /^\d+$/.test(afterComma))
+      return parseFloat(s.replace(/[.,]/g,''))||0; // milhar BR: 1.515 ou 1,515
+    return parseFloat(s.replace(/\./g,'').replace(',','.'))||0; // decimal: 1,5
+  }
+  // Tem ponto: verificar se é decimal ou separador de milhar
+  const dotIdx = s.lastIndexOf('.');
+  if(dotIdx !== -1){
+    const afterDot = s.slice(dotIdx+1);
+    // exatamente 3 dígitos após ponto → separador de milhar (1.168 → 1168)
+    if(afterDot.length === 3 && /^\d+$/.test(afterDot) && !s.slice(0,dotIdx).includes('.'))
+      return parseFloat(s.replace('.',''))||0;
+    // 1-2 dígitos ou .0 → decimal real (820.0 → 820, 1.5 → 1.5)
+    return parseFloat(s)||0;
+  }
+  return parseFloat(s)||0;
 }
 
 function getModalOrder(vol, rotaModal, g, gg){
