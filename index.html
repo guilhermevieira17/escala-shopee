@@ -289,6 +289,7 @@ textarea{resize:vertical;min-height:90px;}
 <div class="sidebar-footer">
     <b>Shopee Logistics</b>
     Last Mile Hub
+    <div style="margin-top:6px;font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.03em">v4.1 · 17/06/2026</div>
   </div>
 </aside>
 
@@ -1145,20 +1146,9 @@ function runEscala(){
           d.modal===tryModal&&
           driverFitCluster(d.cluster,rCluster)
         );
-        // Separar: firstCluster bate vs não bate
-        const firstMatch = allFit.filter(d=>firstClusterMatch(d, rCluster));
-        const noFirstMatch = allFit.filter(d=>!firstClusterMatch(d, rCluster));
-        // Para drivers sem firstMatch: só usar se NÃO há mais rotas disponíveis
-        // no PRIMEIRO cluster deles (verificação rápida)
-        const safeNoFirst = noFirstMatch.filter(d=>{
-          const fc = (d.cluster||'').split(',')[0].trim();
-          // Verificar se ainda há rota não usada no primeiro cluster deste driver
-          const rotasNoPrimeiro = rotasFiltradas.filter(r=>
-            !used_rotas.has(r.rota) && driverFitCluster(fc, r.cluster)
-          );
-          return rotasNoPrimeiro.length === 0; // só usa se cluster principal esgotado
-        });
-        const cands=sortCands([...firstMatch, ...safeNoFirst]);
+        // sortCands já prioriza firstClusterMatch internamente
+        // Não filtramos aqui — apenas ordenamos para dar preferência ao primeiro cluster
+        const cands=sortCands(allFit);
         if(cands.length){
           chosen=cands[0]; allocModal=tryModal; found=true;
           if(tryModal===modalOrder[0]){
