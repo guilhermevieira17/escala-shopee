@@ -547,12 +547,17 @@ const _td=document.getElementById('topbar-date'); if(_td) _td.textContent = new 
 let dispData=[], escData=[], allRows=[], livresData=[], alertas=[];
 
 // ── RODÍZIO STORAGE ──────────────────────────────────────────────
+function rodizioKey(){
+  // Chave única por hub para evitar contaminação entre hubs no mesmo browser
+  const hc = (currentHub && currentHub.hub_code) || 'local';
+  return 'shopee_rodizio_' + hc;
+}
 function getRodizio(){
-  try{ return JSON.parse(localStorage.getItem('shopee_rodizio')||'[]'); }
+  try{ return JSON.parse(localStorage.getItem(rodizioKey())||'[]'); }
   catch(e){ return []; }
 }
 function saveRodizio(list){
-  try{ localStorage.setItem('shopee_rodizio', JSON.stringify(list)); }catch(e){}
+  try{ localStorage.setItem(rodizioKey(), JSON.stringify(list)); }catch(e){}
 }
 function addToRodizio(drivers, turno){
   const list = getRodizio();
@@ -744,8 +749,9 @@ function getModalOrder(vol, rotaModal, g, gg){
     if(m==='VAN')     return ['VAN','FIORINO','PASSEIO'];
   }
 
-  // G → sobe para Fiorino se for Passeio, mantém se já for Fiorino/Van
-  if(hasG){
+  // G: só sobe modal se G > 2 pacotes. Até 2G sem GG → mantém PASSEIO
+  const gQty = parseInt(g)||0;
+  if(hasG && gQty > 2){
     if(m==='PASSEIO') return ['FIORINO','PASSEIO'];
     if(m==='FIORINO') return ['FIORINO','PASSEIO'];
     if(m==='VAN')     return ['VAN','FIORINO','PASSEIO'];
